@@ -18,6 +18,8 @@ type Props = {
   /** Panel desktop menampilkan judul + tombol tutup sendiri; Sheet mobile sudah punya header. */
   showHeader?: boolean;
   onClose: () => void;
+  /** Minta konfirmasi hapus (dialog ada di layar induk). */
+  onDelete: () => void;
 };
 
 function toInput(due: string | null): string {
@@ -28,7 +30,7 @@ function toInput(due: string | null): string {
 }
 
 /** Figma: Tasks — Detail (38:1677 mobile, 153:3750 panel desktop). Perubahan tersimpan otomatis. */
-export function TaskDetail({ task, showHeader = false, onClose }: Props) {
+export function TaskDetail({ task, showHeader = false, onClose, onDelete }: Props) {
   const t = useTranslations("tasks");
   const td = useTranslations("tasks.detail");
   const tc = useTranslations("common");
@@ -161,10 +163,7 @@ export function TaskDetail({ task, showHeader = false, onClose }: Props) {
           icon="delete"
           label={tc("delete")}
           className="text-destructive"
-          onClick={() => {
-            tasksStore.remove(task.id);
-            onClose();
-          }}
+          onClick={onDelete}
         />
         <Button className="flex-1" onClick={onClose}>
           {tc("save")}

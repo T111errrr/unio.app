@@ -239,6 +239,11 @@
       "addSubtask": "Tambah subtugas",
       "addTag": "+ Tag",
       "more": "Lainnya"
+    },
+    "delete": {
+      "title": "Hapus tugas ini?",
+      "message": "\"{title}\" dipindah ke Recently Deleted dan bisa dipulihkan dalam 30 hari.",
+      "toast": "Tugas dihapus"
     }
   }
 }

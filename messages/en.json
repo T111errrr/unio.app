@@ -239,6 +239,11 @@
       "addSubtask": "Add subtask",
       "addTag": "+ Tag",
       "more": "More"
+    },
+    "delete": {
+      "title": "Delete this task?",
+      "message": "\"{title}\" will be moved to Recently Deleted and can be restored within 30 days.",
+      "toast": "Task deleted"
     }
   }
 }
