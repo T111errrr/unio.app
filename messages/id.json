@@ -296,6 +296,8 @@
     "lastNote": "Catatan terakhir",
     "sectionToday": "Hari ini",
     "errorTitle": "Gagal memuat data",
-    "errorBody": "Periksa koneksi internet, lalu coba lagi. Catatan yang belum tersimpan tetap aman di perangkat."
+    "errorBody": "Periksa koneksi internet, lalu coba lagi. Catatan yang belum tersimpan tetap aman di perangkat.",
+    "budgetUsed": "{percent}% dari anggaran harian terpakai",
+    "toastFailed": "Gagal memuat"
   }
 }

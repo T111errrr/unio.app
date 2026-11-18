@@ -296,6 +296,8 @@
     "lastNote": "Latest note",
     "sectionToday": "Today",
     "errorTitle": "Couldn't load data",
-    "errorBody": "Check your internet connection, then try again. Unsaved notes stay safe on your device."
+    "errorBody": "Check your internet connection, then try again. Unsaved notes stay safe on your device.",
+    "budgetUsed": "{percent}% of daily budget used",
+    "toastFailed": "Failed to load"
   }
 }
