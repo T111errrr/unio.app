@@ -1,0 +1,84 @@
+{
+  "app": {
+    "name": "Unio",
+    "tagline": "One app for your everything."
+  },
+  "nav": {
+    "today": "Today",
+    "inbox": "Inbox",
+    "tasks": "Tugas",
+    "finance": "Keuangan",
+    "notes": "Catatan",
+    "recap": "Recap",
+    "settings": "Pengaturan",
+    "lists": "List",
+    "search": "Cari",
+    "quickCapture": "Catat cepat",
+    "expandSidebar": "Buka sidebar",
+    "collapseSidebar": "Tutup sidebar"
+  },
+  "common": {
+    "save": "Simpan",
+    "cancel": "Batal",
+    "delete": "Hapus",
+    "edit": "Edit",
+    "done": "Selesai",
+    "close": "Tutup",
+    "back": "Kembali",
+    "retry": "Coba lagi",
+    "undo": "Undo",
+    "seeAll": "Lihat semua",
+    "manage": "Kelola",
+    "skip": "Lewati",
+    "later": "Nanti saja",
+    "copy": "Salin",
+    "add": "Tambah"
+  },
+  "state": {
+    "saved": "Tersimpan",
+    "loadFailed": "Gagal memuat",
+    "notSynced": "Belum tersinkron",
+    "synced": "Tersinkron · {time}"
+  },
+  "capture": {
+    "title": "Catat cepat",
+    "expense": "Pengeluaran",
+    "income": "Pemasukan",
+    "task": "Tugas",
+    "note": "Catatan",
+    "pocket": "Kantong",
+    "category": "Kategori",
+    "time": "Waktu",
+    "now": "Sekarang"
+  },
+  "auth": {
+    "signIn": "Masuk",
+    "signUp": "Daftar",
+    "createAccount": "Buat akun",
+    "haveAccount": "Saya sudah punya akun",
+    "forgotPassword": "Lupa password?",
+    "sendLink": "Kirim tautan",
+    "name": "Nama",
+    "email": "Email",
+    "password": "Password",
+    "passwordHint": "Gunakan minimal 8 karakter, kombinasi huruf & angka."
+  },
+  "theme": {
+    "title": "Tampilan",
+    "system": "Ikuti sistem",
+    "light": "Terang",
+    "dark": "Gelap",
+    "reduceMotion": "Kurangi gerakan",
+    "textSize": "Ukuran teks"
+  },
+  "settings": {
+    "general": "Umum",
+    "notifications": "Notifikasi",
+    "shortcuts": "Shortcuts & Siri",
+    "data": "Data",
+    "account": "Akun",
+    "language": "Bahasa",
+    "signOut": "Keluar",
+    "deleteAccount": "Hapus akun"
+  }
+}

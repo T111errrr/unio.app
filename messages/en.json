@@ -1,0 +1,84 @@
+{
+  "app": {
+    "name": "Unio",
+    "tagline": "One app for your everything."
+  },
+  "nav": {
+    "today": "Today",
+    "inbox": "Inbox",
+    "tasks": "Tasks",
+    "finance": "Finance",
+    "notes": "Notes",
+    "recap": "Recap",
+    "settings": "Settings",
+    "lists": "Lists",
+    "search": "Search",
+    "quickCapture": "Quick capture",
+    "expandSidebar": "Open sidebar",
+    "collapseSidebar": "Close sidebar"
+  },
+  "common": {
+    "save": "Save",
+    "cancel": "Cancel",
+    "delete": "Delete",
+    "edit": "Edit",
+    "done": "Done",
+    "close": "Close",
+    "back": "Back",
+    "retry": "Try again",
+    "undo": "Undo",
+    "seeAll": "See all",
+    "manage": "Manage",
+    "skip": "Skip",
+    "later": "Not now",
+    "copy": "Copy",
+    "add": "Add"
+  },
+  "state": {
+    "saved": "Saved",
+    "loadFailed": "Couldn't load",
+    "notSynced": "Not synced yet",
+    "synced": "Synced · {time}"
+  },
+  "capture": {
+    "title": "Quick capture",
+    "expense": "Expense",
+    "income": "Income",
+    "task": "Task",
+    "note": "Note",
+    "pocket": "Pocket",
+    "category": "Category",
+    "time": "Time",
+    "now": "Now"
+  },
+  "auth": {
+    "signIn": "Sign in",
+    "signUp": "Sign up",
+    "createAccount": "Create account",
+    "haveAccount": "I already have an account",
+    "forgotPassword": "Forgot password?",
+    "sendLink": "Send link",
+    "name": "Name",
+    "email": "Email",
+    "password": "Password",
+    "passwordHint": "Use at least 8 characters with letters and numbers."
+  },
+  "theme": {
+    "title": "Appearance",
+    "system": "Match system",
+    "light": "Light",
+    "dark": "Dark",
+    "reduceMotion": "Reduce motion",
+    "textSize": "Text size"
+  },
+  "settings": {
+    "general": "General",
+    "notifications": "Notifications",
+    "shortcuts": "Shortcuts & Siri",
+    "data": "Data",
+    "account": "Account",
+    "language": "Language",
+    "signOut": "Sign out",
+    "deleteAccount": "Delete account"
+  }
+}

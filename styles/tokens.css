@@ -1,0 +1,231 @@
+/*
+ * Unio design tokens — diekspor dari Figma (koleksi Color + Layout) pada 16 Nov 2026.
+ * Sumber kebenaran: file Figma Unio. Jangan mengubah nilai di sini tanpa mengubah Figma.
+ * Nama variabel = "code syntax WEB" pada variable Figma.
+ *
+ * Tema: <html data-theme="light|dark|system">. "system" mengikuti prefers-color-scheme.
+ */
+
+:root {
+  /* ---- Warna (Light) ---- */
+  --unio-accent: #111111;
+  --unio-on-accent: #ffffff;
+  --unio-background: #f4f4f4;
+  --unio-surface: #ffffff;
+  --unio-surface-inset: #f0f0f0;
+  --unio-field: #e9e9eb;
+  --unio-border: rgba(0, 0, 0, 0.06);
+  --unio-divider: rgba(0, 0, 0, 0.12);
+  --unio-track: rgba(0, 0, 0, 0.08);
+  --unio-disabled: #999999;
+  --unio-on-disabled: #f2f2f2;
+
+  --unio-text-primary: #000000;
+  --unio-text-secondary: rgba(60, 60, 67, 0.75);
+  --unio-text-tertiary: rgba(60, 60, 67, 0.6);
+
+  --unio-card-dark: #222222;
+  --unio-on-card-dark: #ffffff;
+  --unio-on-card-dark-secondary: rgba(255, 255, 255, 0.6);
+  --unio-track-dark: rgba(255, 255, 255, 0.12);
+  --unio-on-light-chip: #000000;
+
+  --unio-income: #34c759;
+  --unio-expense: #ff383c;
+  --unio-transfer: #6155f5;
+  --unio-warning: #ff8d28;
+  --unio-paylater: #cb30e0;
+  --unio-success: #34c759;
+  --unio-destructive: #ff383c;
+
+  --unio-scrim: rgba(0, 0, 0, 0.35);
+  --unio-fade-clear: rgba(244, 244, 244, 0);
+  --unio-halo: #f0f0f0;
+  --unio-halo-clear: rgba(240, 240, 240, 0);
+
+  /* ---- Spacing ---- */
+  --spacing-2: 2px;
+  --spacing-4: 4px;
+  --spacing-8: 8px;
+  --spacing-12: 12px;
+  --spacing-16: 16px;
+  --spacing-20: 20px;
+  --spacing-24: 24px;
+  --spacing-32: 32px;
+  --spacing-40: 40px;
+
+  /* ---- Radius ---- */
+  --radius-xs: 4px;
+  --radius-s: 6px;
+  --radius-m: 10px;
+  --radius-l: 14px;
+  --radius-control: 18px;
+  --radius-card-inner: 20px;
+  --radius-xl: 26px;
+  --radius-card: 28px;
+  --radius-full: 999px;
+
+  /* ---- Ukuran ---- */
+  --size-touch-target: 44px;
+  --size-macos-control: 28px;
+  --size-ios-margin: 16px;
+  --size-macos-margin: 20px;
+  --size-sidebar: 248px;
+  --size-sidebar-rail: 72px;
+
+  /* ---- Bayangan (effect style Figma) ---- */
+  --shadow-small: 0 1px 3px rgba(0, 0, 0, 0.06), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-medium: 0 8px 24px rgba(0, 0, 0, 0.12), 0 2px 6px rgba(0, 0, 0, 0.06);
+  --shadow-large: 0 20px 50px rgba(0, 0, 0, 0.2), 0 4px 12px rgba(0, 0, 0, 0.08);
+  --shadow-card-soft: 0 12px 32px rgba(0, 0, 0, 0.06), 0 1px 3px rgba(0, 0, 0, 0.04);
+  --shadow-card-elevated: 0 16px 40px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.08);
+  --shadow-button-bevel: inset 0 1.5px 0 rgba(255, 255, 255, 0.18), inset 0 -3px 2px rgba(0, 0, 0, 0.35),
+    0 3px 6px rgba(0, 0, 0, 0.18);
+  --shadow-surface-floating: inset 0 1px 1px rgba(255, 255, 255, 0.9), 0 12px 32px rgba(0, 0, 0, 0.1),
+    0 2px 6px rgba(0, 0, 0, 0.06);
+  --blur-glass: 30px; /* Material/Glass: backdrop-filter: blur(var(--blur-glass)) */
+
+  /* ---- Font ---- */
+  /* SF Pro hanya berlisensi untuk platform Apple: jangan dikirim sebagai webfont.
+     iPhone/Mac memakai SF Pro lewat -apple-system; Windows/Android memakai Inter. */
+  --font-sans: -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", system-ui, sans-serif;
+  --font-serif: "Instrument Serif", Georgia, serif; /* selalu italic */
+
+  /* ---- Gerak (dari prototype) ---- */
+  --ease-ios: cubic-bezier(0.32, 0.72, 0, 1);
+  --ease-close: cubic-bezier(0.4, 0, 0.6, 1);
+  --duration-push: 450ms;   /* pindah layar (push kiri) */
+  --duration-sheet: 400ms;  /* sheet / modal masuk */
+  --duration-close: 250ms;  /* tutup overlay */
+  --duration-fade: 200ms;   /* dissolve, ganti tab desktop */
+
+  color-scheme: light;
+}
+
+/* ---- Warna (Dark) ---- */
+[data-theme="dark"] {
+  --unio-accent: #ffffff;
+  --unio-on-accent: #111111;
+  --unio-background: #000000;
+  --unio-surface: #1c1c1e;
+  --unio-surface-inset: #2c2c2e;
+  --unio-field: #2c2c2e;
+  --unio-border: rgba(255, 255, 255, 0.1);
+  --unio-divider: rgba(255, 255, 255, 0.17);
+  --unio-track: rgba(255, 255, 255, 0.12);
+  --unio-disabled: #4a4a4d;
+  --unio-on-disabled: #99999e;
+
+  --unio-text-primary: #ffffff;
+  --unio-text-secondary: rgba(235, 235, 245, 0.8);
+  --unio-text-tertiary: rgba(235, 235, 245, 0.55);
+
+  --unio-card-dark: #2c2c2e;
+  --unio-on-card-dark: #ffffff;
+  --unio-on-card-dark-secondary: rgba(255, 255, 255, 0.6);
+  --unio-track-dark: rgba(255, 255, 255, 0.12);
+  --unio-on-light-chip: #000000;
+
+  --unio-income: #30d158;
+  --unio-expense: #ff4245;
+  --unio-transfer: #6d7cff;
+  --unio-warning: #ff9230;
+  --unio-paylater: #db34f2;
+  --unio-success: #30d158;
+  --unio-destructive: #ff4245;
+
+  --unio-scrim: rgba(0, 0, 0, 0.6);
+  --unio-fade-clear: rgba(0, 0, 0, 0);
+  --unio-halo: rgba(255, 255, 255, 0.1);
+  --unio-halo-clear: rgba(255, 255, 255, 0);
+
+  color-scheme: dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  [data-theme="system"] {
+    --unio-accent: #ffffff;
+    --unio-on-accent: #111111;
+    --unio-background: #000000;
+    --unio-surface: #1c1c1e;
+    --unio-surface-inset: #2c2c2e;
+    --unio-field: #2c2c2e;
+    --unio-border: rgba(255, 255, 255, 0.1);
+    --unio-divider: rgba(255, 255, 255, 0.17);
+    --unio-track: rgba(255, 255, 255, 0.12);
+    --unio-disabled: #4a4a4d;
+    --unio-on-disabled: #99999e;
+
+    --unio-text-primary: #ffffff;
+    --unio-text-secondary: rgba(235, 235, 245, 0.8);
+    --unio-text-tertiary: rgba(235, 235, 245, 0.55);
+
+    --unio-card-dark: #2c2c2e;
+    --unio-on-card-dark: #ffffff;
+    --unio-on-card-dark-secondary: rgba(255, 255, 255, 0.6);
+    --unio-track-dark: rgba(255, 255, 255, 0.12);
+    --unio-on-light-chip: #000000;
+
+    --unio-income: #30d158;
+    --unio-expense: #ff4245;
+    --unio-transfer: #6d7cff;
+    --unio-warning: #ff9230;
+    --unio-paylater: #db34f2;
+    --unio-success: #30d158;
+    --unio-destructive: #ff4245;
+
+    --unio-scrim: rgba(0, 0, 0, 0.6);
+    --unio-fade-clear: rgba(0, 0, 0, 0);
+    --unio-halo: rgba(255, 255, 255, 0.1);
+    --unio-halo-clear: rgba(255, 255, 255, 0);
+
+    color-scheme: dark;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --duration-push: 1ms;
+    --duration-sheet: 1ms;
+    --duration-close: 1ms;
+    --duration-fade: 1ms;
+  }
+}
+
+/* ---- Tipografi (text style Figma) ----
+ * Mobile memakai skala iOS, desktop (>= 768px) memakai skala macOS.
+ * Pakai kelas ini, jangan menulis ukuran font langsung di komponen. */
+.t-large-title   { font: 700 34px/41px var(--font-sans); letter-spacing: 0.4px; }
+.t-title-1       { font: 700 28px/34px var(--font-sans); letter-spacing: 0.38px; }
+.t-title-2       { font: 700 22px/28px var(--font-sans); letter-spacing: -0.26px; }
+.t-title-3       { font: 600 20px/25px var(--font-sans); letter-spacing: -0.45px; }
+.t-headline      { font: 600 17px/22px var(--font-sans); letter-spacing: -0.43px; }
+.t-body          { font: 400 17px/22px var(--font-sans); letter-spacing: -0.43px; }
+.t-body-em       { font: 600 17px/22px var(--font-sans); letter-spacing: -0.43px; }
+.t-callout       { font: 400 16px/21px var(--font-sans); letter-spacing: -0.31px; }
+.t-callout-em    { font: 600 16px/21px var(--font-sans); letter-spacing: -0.31px; }
+.t-subheadline   { font: 400 15px/20px var(--font-sans); letter-spacing: -0.23px; }
+.t-subheadline-em{ font: 600 15px/20px var(--font-sans); letter-spacing: -0.23px; }
+.t-footnote      { font: 400 13px/18px var(--font-sans); letter-spacing: -0.08px; }
+.t-footnote-em   { font: 600 13px/18px var(--font-sans); letter-spacing: -0.08px; }
+.t-caption-1     { font: 400 12px/16px var(--font-sans); }
+.t-caption-1-em  { font: 600 12px/16px var(--font-sans); }
+.t-caption-2     { font: 400 11px/13px var(--font-sans); letter-spacing: 0.06px; }
+.t-caption-2-em  { font: 600 11px/13px var(--font-sans); letter-spacing: 0.06px; }
+
+.t-serif-title   { font: italic 400 28px/32px var(--font-serif); }
+.t-serif-body    { font: italic 400 20px/24px var(--font-serif); }
+.t-serif-desktop { font: italic 400 17px/22px var(--font-serif); }
+
+/* Skala macOS: hanya untuk elemen khas desktop (sidebar padat, Kbd, tooltip, palet).
+ * Catatan: layar desktop di Figma tetap banyak memakai skala iOS — ikuti frame Figma-nya. */
+.t-mac-large-title { font: 700 26px/32px var(--font-sans); }
+.t-mac-title-1     { font: 700 22px/26px var(--font-sans); }
+.t-mac-title-2     { font: 700 17px/22px var(--font-sans); }
+.t-mac-title-3     { font: 600 15px/20px var(--font-sans); }
+.t-mac-headline    { font: 700 13px/16px var(--font-sans); }
+.t-mac-body        { font: 400 13px/16px var(--font-sans); }
+.t-mac-body-em     { font: 600 13px/16px var(--font-sans); }
+.t-mac-callout     { font: 400 12px/15px var(--font-sans); }
+.t-mac-subheadline { font: 400 11px/14px var(--font-sans); }
+.t-mac-footnote    { font: 400 10px/13px var(--font-sans); }
