@@ -9,6 +9,8 @@ type Props = {
   open: boolean;
   onClose: () => void;
   title: string;
+  /** Tombol di kanan header (maks. 36 px, area tekan 44 px). Kosong = slot tetap 44 px. */
+  action?: ReactNode;
   children?: ReactNode;
 };
 
@@ -16,7 +18,7 @@ type Props = {
  * Sheet: naik dari bawah di mobile (< 768 px), modal di tengah di desktop.
  * Memakai <dialog> bawaan: Esc dan klik di luar menutup.
  */
-export function Sheet({ open, onClose, title, children }: Props) {
+export function Sheet({ open, onClose, title, action, children }: Props) {
   const t = useTranslations("common");
   const ref = useRef<HTMLDialogElement>(null);
   const titleId = useId();
@@ -42,13 +44,15 @@ export function Sheet({ open, onClose, title, children }: Props) {
         "md:inset-0 md:m-auto md:h-fit md:max-w-md md:rounded-(--radius-card)",
       )}
     >
-      <div className="flex flex-col gap-4 px-4 pt-2 pb-[max(2rem,env(safe-area-inset-bottom))]">
+      <div className="flex flex-col gap-4 px-4 pt-2 pb-[max(2.125rem,env(safe-area-inset-bottom))]">
         <div aria-hidden="true" className="mx-auto h-[5px] w-9 rounded-(--radius-full) bg-ink-tertiary md:hidden" />
-        <header className="flex items-center justify-between gap-2">
-          <h2 id={titleId} className="t-headline">
+        {/* Figma: tombol tutup di kiri (36 px, area tekan 44), judul di tengah, slot kanan 44 px. */}
+        <header className="grid grid-cols-[44px_1fr_44px] items-center">
+          <IconButton icon="close" label={t("close")} onClick={onClose} className="size-9 justify-self-start" />
+          <h2 id={titleId} className="t-headline text-center">
             {title}
           </h2>
-          <IconButton icon="close" label={t("close")} onClick={onClose} className="size-11 border-0 shadow-none" />
+          <span className="flex justify-end">{action}</span>
         </header>
         {children}
       </div>

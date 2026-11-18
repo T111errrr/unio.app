@@ -76,7 +76,7 @@ export function TaskDetail({ task, showHeader = false, onClose, onDelete }: Prop
 
       <div className="rounded-(--radius-card-inner) bg-surface-inset px-3 py-1">
         <div className="relative">
-          <ListRow leadingIcon="calendar" title={td("due")} trailing="valueChevron" value={dueLabel()} />
+          <ListRow leadingSurface leadingIcon="calendar" title={td("due")} trailing="valueChevron" value={dueLabel()} />
           <input
             ref={dateInput}
             type="datetime-local"
@@ -90,6 +90,7 @@ export function TaskDetail({ task, showHeader = false, onClose, onDelete }: Prop
           />
         </div>
         <ListRow
+          leadingSurface
           leadingIcon="retry"
           title={td("repeat")}
           trailing="valueChevron"
@@ -97,6 +98,7 @@ export function TaskDetail({ task, showHeader = false, onClose, onDelete }: Prop
           onClick={() => tasksStore.update(task.id, { repeat: task.repeat ? null : "weekly" })}
         />
         <ListRow
+          leadingSurface
           leadingIcon="list"
           title={td("list")}
           trailing="valueChevron"
@@ -104,6 +106,7 @@ export function TaskDetail({ task, showHeader = false, onClose, onDelete }: Prop
           onClick={() => tasksStore.update(task.id, { list: nextList })}
         />
         <ListRow
+          leadingSurface
           leadingIcon="priority"
           title={t("priority")}
           trailing="toggle"

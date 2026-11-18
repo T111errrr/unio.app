@@ -58,12 +58,13 @@ function Ring({ ratio, label }: { ratio: number; label: string }) {
 }
 
 function MiniBars({ done, total }: { done: number; total: number }) {
-  const n = Math.min(Math.max(total, 1), 7);
-  const filled = total === 0 ? 0 : Math.round((done / total) * n);
+  // Figma: 7 batang, tinggi bervariasi (persen dari 20 px), batang selesai memakai warna aksen.
+  const HEIGHTS = ["41%", "59%", "32%", "77%", "100%", "50%", "68%"];
+  const filled = total === 0 ? 0 : Math.round((done / total) * HEIGHTS.length);
   return (
-    <div aria-hidden className="flex h-5 items-end gap-0.5">
-      {Array.from({ length: n }, (_, i) => (
-        <span key={i} className={cx("w-0.5 rounded-(--radius-full)", i < filled ? "h-5 bg-accent" : "h-2.5 bg-field")} />
+    <div aria-hidden className="flex h-5 items-end gap-px">
+      {HEIGHTS.map((h, i) => (
+        <span key={i} style={{ height: h }} className={cx("w-0.5 rounded-xs", i < filled ? "bg-accent" : "bg-field")} />
       ))}
     </div>
   );

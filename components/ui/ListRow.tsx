@@ -15,6 +15,8 @@ type Props = {
   checked?: boolean;
   onCheckedChange?: (checked: boolean) => void;
   showDivider?: boolean;
+  /** Kotak ikon putih (dipakai di dalam kartu abu-abu/inset, mis. properti tugas). */
+  leadingSurface?: boolean;
   onClick?: () => void;
   className?: string;
 };
@@ -27,6 +29,7 @@ export function ListRow({
   checked = false,
   onCheckedChange,
   showDivider = true,
+  leadingSurface = false,
   onClick,
   className,
 }: Props) {
@@ -47,8 +50,8 @@ export function ListRow({
     "relative flex min-h-13 w-full items-center gap-3 px-1 py-2 text-left",
     showDivider &&
       cx(
-        "after:absolute after:right-0 after:bottom-0 after:h-px after:bg-divider after:content-['']",
-        leadingIcon ? "after:left-12" : "after:left-0",
+        "after:absolute after:bottom-0 after:h-px after:bg-divider after:content-['']",
+        leadingIcon ? "after:left-13 after:right-1" : "after:right-0 after:left-0",
       ),
     className,
   );
@@ -56,7 +59,7 @@ export function ListRow({
   const content = (
     <>
       {leadingIcon && (
-        <span className="flex size-9 shrink-0 items-center justify-center rounded-(--radius-m) bg-field text-ink">
+        <span className={cx("flex size-9 shrink-0 items-center justify-center rounded-(--radius-m) text-ink", leadingSurface ? "bg-surface" : "bg-field")}>
           <Icon name={leadingIcon} size="small" />
         </span>
       )}

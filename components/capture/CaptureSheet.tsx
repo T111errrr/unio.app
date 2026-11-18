@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useMemo, useRef, useState } from "react";
+import { Fragment, useEffect, useMemo, useRef, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Badge } from "@/components/ui/Badge";
 import { Button } from "@/components/ui/Button";
@@ -158,15 +158,15 @@ function CaptureForm({ initialTab, onClose, onSaved }: { initialTab: Tab; onClos
   const cats = income ? INCOME : EXPENSE;
 
   return (
-    <div className="flex flex-col gap-4 px-4 pt-2 pb-[max(1.5rem,env(safe-area-inset-bottom))]">
+    <div className="flex flex-col gap-4 px-4 pt-2 pb-[max(2.125rem,env(safe-area-inset-bottom))]">
       <div aria-hidden="true" className="mx-auto h-[5px] w-9 rounded-(--radius-full) bg-ink-tertiary md:hidden" />
       <header className="grid grid-cols-[44px_1fr_44px] items-center">
-        <IconButton icon="close" label={tc("close")} onClick={onClose} className="size-9 shadow-(--shadow-surface-floating)" />
+        <IconButton icon="close" label={tc("close")} onClick={onClose} className="size-9 justify-self-start" />
         <h2 className="t-headline text-center">{t("title")}</h2>
         <span aria-hidden="true" />
       </header>
 
-      <div role="tablist" aria-label={t("title")} className="flex justify-center gap-2 overflow-x-auto">
+      <div role="tablist" aria-label={t("title")} className="flex justify-center gap-1.5 overflow-x-auto">
         {TABS.map((id) => (
           <Chip key={id} style={tab === id ? "selected" : "light"} onClick={() => switchTab(id)}>
             {t(id)}
@@ -177,8 +177,8 @@ function CaptureForm({ initialTab, onClose, onSaved }: { initialTab: Tab; onClos
       {money && (
         <>
           <div className="flex flex-col items-center gap-1 py-4 text-center">
-            <p className="flex items-baseline gap-2" aria-live="polite">
-              <span className="t-title-3 text-ink-secondary">Rp</span>
+            <p className="flex items-baseline gap-1.5" aria-live="polite">
+              <span className="t-title-2 text-ink-secondary">Rp</span>
               <span
                 className={cx("text-[48px] leading-[56px] font-bold tracking-tight", !amount ? "text-ink-tertiary" : income ? "text-income" : "text-ink")}
               >
@@ -197,16 +197,19 @@ function CaptureForm({ initialTab, onClose, onSaved }: { initialTab: Tab; onClos
           </div>
 
           {amount && chosen && (
-            <dl className="grid grid-cols-3 divide-x divide-divider rounded-(--radius-card-inner) border border-border bg-surface-inset py-3 text-center">
+            <dl className="flex items-center rounded-(--radius-card-inner) border border-border bg-surface-inset px-1 py-3 text-center">
               {[
                 [t("pocket"), t("pocketCash")],
                 [t("category"), t(`cat.${chosen}`)],
                 [t("time"), income ? t("today") : t("now")],
-              ].map(([k, v]) => (
-                <div key={k} className="flex flex-col gap-0.5 px-2">
-                  <dt className="t-footnote text-ink-secondary">{k}</dt>
-                  <dd className="t-subheadline-em">{v}</dd>
-                </div>
+              ].map(([k, v], i) => (
+                <Fragment key={k}>
+                  {i > 0 && <div aria-hidden className="h-8 w-px shrink-0 bg-border" />}
+                  <div className="flex min-w-0 flex-1 flex-col items-center gap-0.5">
+                    <dt className="t-footnote text-ink-tertiary">{k}</dt>
+                    <dd className="t-subheadline-em">{v}</dd>
+                  </div>
+                </Fragment>
               ))}
             </dl>
           )}
@@ -216,12 +219,12 @@ function CaptureForm({ initialTab, onClose, onSaved }: { initialTab: Tab; onClos
             </div>
           )}
 
-          <div className="grid grid-cols-4 gap-2" role="group" aria-label={t("category")}>
+          <div className="flex justify-between" role="group" aria-label={t("category")}>
             {cats.map(({ id, icon }) => {
               const on = chosen === id;
               return (
-                <button key={id} type="button" aria-pressed={on} onClick={() => setCategory(id)} className="flex min-h-11 flex-col items-center gap-1.5">
-                  <span className={cx("flex size-14 items-center justify-center rounded-(--radius-card-inner)", on ? "bg-accent text-on-accent shadow-(--shadow-button-bevel)" : "bg-field text-ink")}>
+                <button key={id} type="button" aria-pressed={on} onClick={() => setCategory(id)} className="flex min-h-11 w-20 flex-col items-center gap-1.5">
+                  <span className={cx("flex size-14 items-center justify-center rounded-(--radius-control)", on ? "bg-accent text-on-accent shadow-(--shadow-button-bevel)" : "bg-field text-ink")}>
                     <Icon name={icon} />
                   </span>
                   <span className={cx("t-caption-1", on ? "text-ink" : "text-ink-secondary")}>{t(`cat.${id}`)}</span>

@@ -74,8 +74,8 @@ export function NoteEditor({ note, folders, onClose, onDelete }: Props) {
       aria-label={t("editor")}
       className="fixed inset-0 m-0 h-dvh max-h-none w-full max-w-none bg-background p-0 text-ink md:inset-0 md:m-auto md:h-[85dvh] md:max-w-2xl md:rounded-(--radius-card)"
     >
-      <div className="flex h-full flex-col">
-        <header className="grid grid-cols-[44px_1fr_44px] items-center gap-2 px-4 pt-[max(1rem,env(safe-area-inset-top))] pb-2">
+      <div className="flex h-full flex-col pt-[env(safe-area-inset-top)]">
+        <header className="grid h-15 shrink-0 grid-cols-[44px_1fr_44px] items-center gap-2 px-4 py-2">
           <IconButton icon="chevron-left" label={tc("back")} onClick={save} className="size-11" />
           <h2 className="t-headline truncate text-center">{tag}</h2>
           <div className="relative">
@@ -99,15 +99,15 @@ export function NoteEditor({ note, folders, onClose, onDelete }: Props) {
           </div>
         </header>
 
-        <div className="flex-1 overflow-y-auto px-6 pb-40">
+        <div className="flex flex-1 flex-col gap-4 overflow-y-auto px-4 pb-40">
           <input
             value={title}
             onChange={(e) => setTitle(e.target.value)}
             placeholder={t("titlePlaceholder")}
             aria-label={t("titlePlaceholder")}
-            className="t-title-1 mt-2 w-full bg-transparent py-2 outline-none placeholder:text-ink-tertiary"
+            className="t-title-1 w-full bg-transparent outline-none placeholder:text-ink-tertiary"
           />
-          <div className="flex flex-wrap gap-2 py-2" role="group" aria-label={t("folder")}>
+          <div className="flex flex-wrap gap-2" role="group" aria-label={t("folder")}>
             {folders.map((f) => (
               <button
                 key={f}
@@ -130,19 +130,19 @@ export function NoteEditor({ note, folders, onClose, onDelete }: Props) {
             onChange={(e) => setBody(e.target.value)}
             placeholder={t("bodyPlaceholder")}
             aria-label={t("bodyPlaceholder")}
-            className="t-body mt-2 min-h-72 w-full resize-none bg-transparent outline-none placeholder:text-ink-tertiary"
+            className="t-body min-h-72 w-full resize-none bg-transparent pt-2 outline-none placeholder:text-ink-tertiary"
           />
         </div>
 
-        <div className="pointer-events-none fixed inset-x-0 bottom-[max(1.5rem,env(safe-area-inset-bottom))] flex justify-center px-4 md:absolute">
-          <div className="pointer-events-auto flex items-center gap-1 rounded-(--radius-full) border border-border bg-surface py-2 pr-2 pl-3 shadow-(--shadow-surface-floating)">
+        <div className="pointer-events-none fixed inset-x-0 bottom-[max(2.625rem,env(safe-area-inset-bottom))] flex justify-center px-4 md:absolute">
+          <div className="pointer-events-auto flex w-full max-w-md items-center justify-between gap-1 rounded-(--radius-card) border border-border bg-surface p-1.5 shadow-(--shadow-surface-floating)">
             {tools.map((x) => (
               <button
                 key={x.key}
                 type="button"
                 aria-label={x.label}
                 onClick={x.run}
-                className="t-headline flex size-11 items-center justify-center rounded-(--radius-full)"
+                className="t-headline flex size-11 shrink-0 items-center justify-center rounded-(--radius-full)"
               >
                 {x.icon ? <Icon name={x.icon} size="small" /> : x.text}
               </button>
@@ -150,7 +150,7 @@ export function NoteEditor({ note, folders, onClose, onDelete }: Props) {
             <button
               type="button"
               onClick={save}
-              className="t-body-em ml-1 h-11 rounded-(--radius-full) bg-accent px-5 text-on-accent shadow-(--shadow-button-bevel)"
+              className="t-body-em h-11 shrink-0 rounded-(--radius-control) bg-accent px-6 text-on-accent shadow-(--shadow-button-bevel)"
             >
               {t("done")}
             </button>
