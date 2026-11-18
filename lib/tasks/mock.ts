@@ -10,9 +10,9 @@ function at(dayOffset: number, hour: number, minute = 0): string {
 /** Data contoh lokal (sama dengan isi Figma). Diganti Supabase di tahap backend. */
 export function createMockTasks(): Task[] {
   return [
-    { id: "t1", title: "📊 Kirim revisi deck klien", list: "kantor", due: at(0, 10), allDay: false, priority: true, done: false, repeat: null },
+    { id: "t1", title: "📊 Kirim revisi deck klien", list: "kantor", due: at(0, 22), allDay: false, priority: true, done: false, repeat: null },
     { id: "t2", title: "📧 Balas email vendor", list: "kantor", due: at(-1, 16), allDay: false, priority: false, done: false, repeat: null },
-    { id: "t3", title: "⚡️ Bayar listrik", list: "pribadi", due: at(0, 19), allDay: false, priority: false, done: false, repeat: null },
+    { id: "t3", title: "⚡️ Bayar listrik", list: "pribadi", due: at(0, 23), allDay: false, priority: false, done: false, repeat: null },
     { id: "t4", title: "🗓️ Meeting mingguan tim", list: "kantor", due: at(1, 9), allDay: false, priority: false, done: false, repeat: "weekly" },
     { id: "t5", title: "🛒 Belanja bulanan", list: "pribadi", due: at(1, 20), allDay: false, priority: false, done: false, repeat: null },
     { id: "t6", title: "🎨 Polish UI komponen Unio", list: "pribadi", due: at(3, 0), allDay: true, priority: true, done: false, repeat: null },

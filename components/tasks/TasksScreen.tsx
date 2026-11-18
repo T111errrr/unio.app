@@ -35,7 +35,7 @@ export function TasksScreen() {
   }, [scenario]);
 
   const dateFmt = useMemo(() => new Intl.DateTimeFormat(locale, { weekday: "short", day: "numeric", month: "short" }), [locale]);
-  const timeFmt = useMemo(() => new Intl.DateTimeFormat(locale, { hour: "2-digit", minute: "2-digit", hourCycle: "h23" }), [locale]);
+  const timeFmt = useMemo(() => ({ format: (d: Date) => `${String(d.getHours()).padStart(2, "0")}:${String(d.getMinutes()).padStart(2, "0")}` }), []);
 
   const visible = useMemo(() => (now ? filterTasks(tasks, list, view, now) : []), [tasks, list, view, now]);
   const upcomingCount = useMemo(() => (now ? filterTasks(tasks, "all", "upcoming", now).length : 0), [tasks, now]);
@@ -77,7 +77,7 @@ export function TasksScreen() {
           )}
         </div>
         <IconButton icon="search" label={t("search")} className="size-11 md:hidden" />
-        <Button icon="add" className="hidden md:inline-flex">{t("newTask")}</Button>
+        <Button icon="add" fullWidth={false} className="hidden shrink-0 md:inline-flex">{t("newTask")}</Button>
       </header>
 
       {unsynced && (
@@ -87,7 +87,7 @@ export function TasksScreen() {
             <p className="t-subheadline-em text-ink">{t("unsynced")}</p>
             <p className="t-footnote text-ink-secondary">{t("unsyncedBody")}</p>
           </div>
-          <Button variant="secondary" icon="retry" className="h-11 px-4" onClick={() => tasksStore.retrySync()}>
+          <Button variant="secondary" icon="retry" fullWidth={false} className="h-11 shrink-0 px-4" onClick={() => tasksStore.retrySync()}>
             {tc("retry")}
           </Button>
         </div>
