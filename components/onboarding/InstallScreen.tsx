@@ -71,7 +71,7 @@ function LaptopIllustration() {
           <span className="flex-1 rounded-(--radius-l) bg-surface-inset" />
         </div>
       </div>
-      <div className="absolute left-60 top-52 flex w-75 flex-col gap-3 rounded-(--radius-card-inner) border border-border bg-surface p-5 shadow-(--shadow-card-elevated)">
+      <div className="absolute left-40 top-52 flex w-75 flex-col gap-3 rounded-(--radius-card-inner) border border-border bg-surface p-5 shadow-(--shadow-card-elevated)">
         <div className="flex items-center gap-2.5">
           <span className="flex size-9 items-center justify-center gap-1 rounded-(--radius-m) bg-card-dark">
             <span className="h-3 w-1 rounded-(--radius-xs) bg-on-card-dark" />
