@@ -70,7 +70,10 @@
     "light": "Light",
     "dark": "Dark",
     "reduceMotion": "Reduce motion",
-    "textSize": "Text size"
+    "textSize": "Text size",
+    "subtitle": "Follows Windows/iPhone, or choose manually.",
+    "hint": "Dark mode follows your iPhone or Windows setting when \"Match system\" is selected.",
+    "other": "More appearance"
   },
   "settings": {
     "general": "General",
