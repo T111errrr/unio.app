@@ -11,9 +11,9 @@ Status awal 16 Nov 2026: **siap** = bahannya sudah ada di repo ini dan tinggal d
 | ID | Tugas | Selesai bila | Catatan |
 | --- | --- | --- | --- |
 | 1.01 | Akun GitHub, Vercel, Supabase + repo privat `unio` | Repo terhubung ke Vercel, link preview muncul | Dikerjakan Jeff, lihat `00-mulai-di-sini.md` |
-| 1.02 | Next.js + TypeScript + Tailwind + manifest PWA | App kosong bisa dipasang di Home Screen iPhone | **kerangka ditulis manual (belum diverifikasi build — sandbox tanpa npm).** Next 15, Tailwind 4, manifest + ikon PWA. Verifikasi: `npm install && npm run build` atau preview Vercel |
+| 1.02 | Next.js + TypeScript + Tailwind + manifest PWA | App kosong bisa dipasang di Home Screen iPhone | **build Vercel lolos (18 Nov 2026).** Tinggal Jeff mencoba Add to Home Screen di iPhone |
 | 1.03 | CLAUDE.md (aturan proyek) | Claude Code mengikuti aturan tanpa diulang | **siap** — `CLAUDE.md` |
-| 1.04 | Token Figma → tokens.css + Tailwind | Warna light/dark, spacing, radius sama dengan Figma | **siap** — `styles/tokens.css`; tinggal dihubungkan ke tema Tailwind |
+| 1.04 | Token Figma → tokens.css + Tailwind | Warna light/dark, spacing, radius sama dengan Figma | **selesai di kode (menunggu preview Vercel)** — 30 warna dipetakan di `app/globals.css` (`bg-surface`, `text-ink`, `border-divider`, …); radius/bayangan/jarak lewat `rounded-(--radius-card)` dst. |
 | 1.05 | Set ikon pengganti SF Symbols + peta simbol | Semua ikon di desain punya padanan | **siap** — `icon-map.md`; verifikasi nama Lucide, buat `Icon.tsx` |
 | 1.06 | Bahasa ID/EN (next-intl) + pilihan bahasa | Semua teks UI lewat kunci; ganti bahasa langsung jalan | Awal: `messages/id.json`, `messages/en.json` |
 | 1.07 | Komponen dasar (Button, Icon Button, Text Field, Segmented, Chip, Toggle, Badge, List Row, Card, Sheet, Dialog, Toast, Skeleton, Empty State, Progress Bar) | Cocok dengan Figma di light dan dark | Buat halaman `/dev/components` (hanya non-produksi) untuk cek visual |
