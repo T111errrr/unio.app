@@ -166,7 +166,7 @@ function CaptureForm({ initialTab, onClose, onSaved }: { initialTab: Tab; onClos
         <span aria-hidden="true" />
       </header>
 
-      <div role="tablist" aria-label={t("title")} className="flex justify-center gap-1.5 overflow-x-auto">
+      <div role="tablist" aria-label={t("title")} className="flex justify-center gap-1.5 overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         {TABS.map((id) => (
           <Chip key={id} style={tab === id ? "selected" : "light"} onClick={() => switchTab(id)}>
             {t(id)}

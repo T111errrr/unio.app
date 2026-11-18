@@ -120,7 +120,7 @@ export function TasksScreen() {
         </div>
       )}
 
-      <div role="group" aria-label={t("lists.label")} className="-mx-4 flex gap-2 overflow-x-auto px-4">
+      <div role="group" aria-label={t("lists.label")} className="-mx-4 flex gap-2 overflow-x-auto overflow-y-hidden px-4 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden">
         <Chip style={list === "all" ? "selected" : "light"} onClick={() => setList("all")}>{t("lists.all")}</Chip>
         {TASK_LISTS.map((id) => (
           <Chip key={id} style={list === id ? "selected" : "light"} onClick={() => setList(id)}>{listName(id)}</Chip>

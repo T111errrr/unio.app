@@ -134,15 +134,15 @@ export function NoteEditor({ note, folders, onClose, onDelete }: Props) {
           />
         </div>
 
-        <div className="pointer-events-none fixed inset-x-0 bottom-[max(2.625rem,env(safe-area-inset-bottom))] flex justify-center px-4 md:absolute">
-          <div className="pointer-events-auto flex w-full max-w-md items-center justify-between gap-1 rounded-(--radius-card) border border-border bg-surface p-1.5 shadow-(--shadow-surface-floating)">
+        <div className="pointer-events-none fixed inset-x-0 bottom-[max(2.625rem,env(safe-area-inset-bottom))] flex justify-center md:absolute md:px-4">
+          <div className="pointer-events-auto flex w-full items-center gap-1 rounded-(--radius-card) border border-border bg-surface p-1.5 shadow-(--shadow-surface-floating)">
             {tools.map((x) => (
               <button
                 key={x.key}
                 type="button"
                 aria-label={x.label}
                 onClick={x.run}
-                className="t-headline flex size-11 shrink-0 items-center justify-center rounded-(--radius-full)"
+                className="t-headline flex h-11 min-w-0 flex-1 items-center justify-center rounded-(--radius-full)"
               >
                 {x.icon ? <Icon name={x.icon} size="small" /> : x.text}
               </button>
@@ -150,7 +150,7 @@ export function NoteEditor({ note, folders, onClose, onDelete }: Props) {
             <button
               type="button"
               onClick={save}
-              className="t-body-em h-11 shrink-0 rounded-(--radius-control) bg-accent px-6 text-on-accent shadow-(--shadow-button-bevel)"
+              className="t-body-em h-11 w-23 shrink-0 rounded-(--radius-control) bg-accent text-on-accent shadow-(--shadow-button-bevel)"
             >
               {t("done")}
             </button>

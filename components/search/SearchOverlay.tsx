@@ -147,7 +147,7 @@ export function SearchOverlay({ open, onClose }: { open: boolean; onClose: () =>
           </section>
         ) : (
           <>
-            <div className="flex gap-2 overflow-x-auto" role="group" aria-label={t("filter")}>
+            <div className="flex gap-2 overflow-x-auto overflow-y-hidden [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" role="group" aria-label={t("filter")}>
               {([["all", total], ["tasks", res.tasks.length], ["money", res.money.length], ["notes", res.notes.length]] as const).map(([k, n]) => (
                 <button
                   key={k}
