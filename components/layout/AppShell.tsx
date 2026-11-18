@@ -2,6 +2,7 @@
 
 import { useEffect, useRef, useState, type ReactNode } from "react";
 import { usePathname } from "@/i18n/navigation";
+import { SearchOverlay } from "@/components/search/SearchOverlay";
 import { CaptureSheet } from "@/components/capture/CaptureSheet";
 import { SidebarBody } from "./SidebarBody";
 import { TabBar } from "./TabBar";
@@ -15,6 +16,7 @@ import { TabBar } from "./TabBar";
 export function AppShell({ children }: { children: ReactNode }) {
   const [drawerOpen, setDrawerOpen] = useState(false);
   const [captureOpen, setCaptureOpen] = useState(false);
+  const [searchOpen, setSearchOpen] = useState(false);
   const drawerRef = useRef<HTMLDialogElement>(null);
   const pathname = usePathname();
 
@@ -32,9 +34,18 @@ export function AppShell({ children }: { children: ReactNode }) {
         e.preventDefault();
         setCaptureOpen(true);
       }
+      if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "k") {
+        e.preventDefault();
+        setSearchOpen(true);
+      }
     };
+    const onSearch = () => setSearchOpen(true);
     window.addEventListener("keydown", onKey);
-    return () => window.removeEventListener("keydown", onKey);
+    window.addEventListener("unio:search", onSearch);
+    return () => {
+      window.removeEventListener("keydown", onKey);
+      window.removeEventListener("unio:search", onSearch);
+    };
   }, []);
 
   // Tutup drawer saat pindah halaman.
@@ -43,16 +54,17 @@ export function AppShell({ children }: { children: ReactNode }) {
   return (
     <div className="min-h-dvh bg-background text-ink md:flex">
       <aside className="sticky top-0 hidden h-dvh w-18 shrink-0 border-r border-divider md:block xl:hidden">
-        <SidebarBody variant="rail" onToggle={() => setDrawerOpen(true)} onCapture={() => setCaptureOpen(true)} />
+        <SidebarBody variant="rail" onToggle={() => setDrawerOpen(true)} onSearch={() => setSearchOpen(true)} onCapture={() => setCaptureOpen(true)} />
       </aside>
       <aside className="sticky top-0 hidden h-dvh w-62 shrink-0 border-r border-divider xl:block">
-        <SidebarBody variant="full" onCapture={() => setCaptureOpen(true)} />
+        <SidebarBody variant="full" onSearch={() => setSearchOpen(true)} onCapture={() => setCaptureOpen(true)} />
       </aside>
 
       <main className="min-w-0 flex-1 pb-28 md:pb-0">{children}</main>
 
       <TabBar onCapture={() => setCaptureOpen(true)} />
       <CaptureSheet open={captureOpen} onClose={() => setCaptureOpen(false)} />
+      <SearchOverlay open={searchOpen} onClose={() => setSearchOpen(false)} />
 
       {/* Drawer sidebar (hanya relevan di 768–1279 px). Esc dan klik di luar menutup. */}
       <dialog
@@ -63,7 +75,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         }}
         className="motion-drawer fixed inset-y-0 left-0 m-0 h-dvh max-h-none w-62 max-w-none overflow-hidden bg-surface p-0 text-ink shadow-(--shadow-large) xl:hidden"
       >
-        <SidebarBody variant="full" onToggle={() => setDrawerOpen(false)} onNavigate={() => setDrawerOpen(false)} onCapture={() => { setDrawerOpen(false); setCaptureOpen(true); }} />
+        <SidebarBody variant="full" onToggle={() => setDrawerOpen(false)} onNavigate={() => setDrawerOpen(false)} onSearch={() => { setDrawerOpen(false); setSearchOpen(true); }} onCapture={() => { setDrawerOpen(false); setCaptureOpen(true); }} />
       </dialog>
     </div>
   );

@@ -72,7 +72,8 @@
       "freelance": "Freelance",
       "bonus": "Bonus",
       "other": "Other"
-    }
+    },
+    "retry": "Try again"
   },
   "auth": {
     "signIn": "Sign in",
@@ -298,7 +299,8 @@
     "errorTitle": "Couldn't load data",
     "errorBody": "Check your internet connection, then try again. Unsaved notes stay safe on your device.",
     "budgetUsed": "{percent}% of daily budget used",
-    "toastFailed": "Failed to load"
+    "toastFailed": "Failed to load",
+    "search": "Search"
   },
   "notes": {
     "title": "Notes",
@@ -343,5 +345,56 @@
       "checklist": "Checklist",
       "link": "Link"
     }
+  },
+  "inbox": {
+    "title": "Inbox",
+    "intro": "{count} entries from Siri need to be completed.",
+    "filter": "Filter",
+    "f": {
+      "all": "All",
+      "expense": "Money",
+      "task": "Tasks"
+    },
+    "yesterday": "yesterday",
+    "issue": {
+      "pocket": "Pocket not chosen",
+      "category": "Category unclear",
+      "date": "Date unclear"
+    },
+    "dateRead": "Date read: {date}",
+    "delete": "Delete",
+    "complete": "Complete",
+    "saveTask": "Save task",
+    "saveExpense": "Save expense",
+    "pickPocket": "Choose pocket",
+    "pickCategory": "Choose category",
+    "deleted": "Entry deleted",
+    "taskSaved": "Task saved",
+    "completed": "Expense saved",
+    "undo": "Undo",
+    "unsynced": "Not synced",
+    "emptyTitle": "Inbox is clear ✨",
+    "emptyBody": "All entries from Siri are fully logged.",
+    "errorTitle": "Couldn't load Inbox",
+    "errorBody": "Check your internet connection, then try again."
+  },
+  "search": {
+    "title": "Search",
+    "placeholder": "Search tasks, transactions, notes",
+    "clear": "Clear search",
+    "cancel": "Cancel",
+    "recent": "Recent searches",
+    "try": "Try searching",
+    "filter": "Filter results",
+    "tab": {
+      "all": "All",
+      "tasks": "Tasks",
+      "money": "Money",
+      "notes": "Notes"
+    },
+    "noDate": "No date",
+    "notFound": "Not found",
+    "notFoundBody": "No tasks, transactions, or notes match \"{query}\".",
+    "createTask": "Create task \"{query}\""
   }
 }

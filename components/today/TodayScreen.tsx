@@ -13,6 +13,7 @@ import { Toast } from "@/components/ui/Toast";
 import { TaskRow } from "@/components/tasks/TaskRow";
 import { Link } from "@/i18n/navigation";
 import { cx } from "@/lib/cx";
+import { useInbox } from "@/lib/inbox/store";
 import { useFinance } from "@/lib/finance/store";
 import { useNotes } from "@/lib/notes/store";
 import { dayDiff, isOverdue } from "@/lib/tasks/group";
@@ -121,7 +122,7 @@ export function TodayScreen() {
     () => (now && !empty ? tasks.filter((x) => !x.deletedAt && x.due && (dayDiff(x.due, now) === 0 || isOverdue(x, now))) : []),
     [tasks, now, empty],
   );
-  const inboxCount = tasks.filter((x) => !x.deletedAt && !x.done && !x.due).length;
+  const inboxCount = useInbox().items.length;
   const doneCount = todayTasks.filter((x) => x.done).length;
   const todayTx = useMemo(
     () => (now && !empty ? transactions.filter((x) => dayDiff(x.at, now) === 0) : []),
@@ -160,6 +161,12 @@ export function TodayScreen() {
           <h1 className="t-title-1">{t("greeting", { name: "Jeff" })}</h1>
           <p className="t-accent-serif-sm text-ink-secondary">{t("tagline")}</p>
         </div>
+        <IconButton
+          icon="search"
+          label={t("search")}
+          className="size-11 shrink-0"
+          onClick={() => window.dispatchEvent(new Event("unio:search"))}
+        />
         <IconButton
           icon="nav-today"
           label={t("toggleTheme")}
