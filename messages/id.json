@@ -72,7 +72,8 @@
       "freelance": "Freelance",
       "bonus": "Bonus",
       "other": "Lainnya"
-    }
+    },
+    "retry": "Coba lagi"
   },
   "auth": {
     "signIn": "Masuk",
@@ -298,7 +299,8 @@
     "errorTitle": "Gagal memuat data",
     "errorBody": "Periksa koneksi internet, lalu coba lagi. Catatan yang belum tersimpan tetap aman di perangkat.",
     "budgetUsed": "{percent}% dari anggaran harian terpakai",
-    "toastFailed": "Gagal memuat"
+    "toastFailed": "Gagal memuat",
+    "search": "Cari"
   },
   "notes": {
     "title": "Catatan",
@@ -343,5 +345,56 @@
       "checklist": "Checklist",
       "link": "Tautan"
     }
+  },
+  "inbox": {
+    "title": "Inbox",
+    "intro": "{count} entri dari Siri perlu dilengkapi.",
+    "filter": "Filter",
+    "f": {
+      "all": "Semua",
+      "expense": "Uang",
+      "task": "Tugas"
+    },
+    "yesterday": "kemarin",
+    "issue": {
+      "pocket": "Kantong belum dipilih",
+      "category": "Kategori belum jelas",
+      "date": "Tanggal belum jelas"
+    },
+    "dateRead": "Tanggal dibaca: {date}",
+    "delete": "Hapus",
+    "complete": "Lengkapi",
+    "saveTask": "Simpan tugas",
+    "saveExpense": "Simpan pengeluaran",
+    "pickPocket": "Pilih kantong",
+    "pickCategory": "Pilih kategori",
+    "deleted": "Entri dihapus",
+    "taskSaved": "Tugas disimpan",
+    "completed": "Pengeluaran disimpan",
+    "undo": "Urungkan",
+    "unsynced": "Belum tersinkron",
+    "emptyTitle": "Inbox bersih ✨",
+    "emptyBody": "Semua entri dari Siri sudah tercatat lengkap.",
+    "errorTitle": "Gagal memuat Inbox",
+    "errorBody": "Periksa koneksi internet, lalu coba lagi."
+  },
+  "search": {
+    "title": "Pencarian",
+    "placeholder": "Cari tugas, transaksi, catatan",
+    "clear": "Hapus pencarian",
+    "cancel": "Batal",
+    "recent": "Terakhir dicari",
+    "try": "Coba cari",
+    "filter": "Filter hasil",
+    "tab": {
+      "all": "Semua",
+      "tasks": "Tugas",
+      "money": "Uang",
+      "notes": "Catatan"
+    },
+    "noDate": "Tanpa tanggal",
+    "notFound": "Tidak ditemukan",
+    "notFoundBody": "Tidak ada tugas, transaksi, atau catatan yang cocok dengan \"{query}\".",
+    "createTask": "Buat tugas \"{query}\""
   }
 }
