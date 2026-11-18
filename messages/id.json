@@ -267,5 +267,35 @@
       "message": "\"{title}\" dipindah ke Recently Deleted dan bisa dipulihkan dalam 30 hari.",
       "toast": "Tugas dihapus"
     }
+  },
+  "today": {
+    "greeting": "Hai, {name}",
+    "tagline": "Satu catatan cepat, satu hari rapi.",
+    "toggleTheme": "Ganti tema",
+    "week": "Minggu ini",
+    "summary": "Ringkasan hari ini",
+    "expenseShort": "Pengeluaran",
+    "tasksShort": "Tugas",
+    "ofBudget": "dari {amount}",
+    "noTasksYet": "belum ada tugas",
+    "doneLabel": "selesai",
+    "inbox": "Inbox",
+    "inboxCount": "{count} belum lengkap",
+    "tasksToday": "Tugas hari ini",
+    "seeAll": "Lihat semua",
+    "tabTodo": "Belum",
+    "tabDone": "Selesai",
+    "tabPending": "Tertunda",
+    "nothingHere": "Tidak ada tugas di tab ini.",
+    "emptyTasksTitle": "Belum ada tugas hari ini",
+    "txToday": "Transaksi hari ini",
+    "oneUnsynced": "1 belum sinkron",
+    "emptyTxTitle": "Belum ada transaksi",
+    "emptyTxBody": "Catat pengeluaran pertamamu, misalnya \"kopi 25rb\".",
+    "addTx": "Catat transaksi",
+    "lastNote": "Catatan terakhir",
+    "sectionToday": "Hari ini",
+    "errorTitle": "Gagal memuat data",
+    "errorBody": "Periksa koneksi internet, lalu coba lagi. Catatan yang belum tersimpan tetap aman di perangkat."
   }
 }
