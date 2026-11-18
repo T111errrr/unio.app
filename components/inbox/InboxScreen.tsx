@@ -82,7 +82,7 @@ export function InboxScreen() {
   const error = status === "error";
 
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pt-2 pb-36 md:pt-8 md:pb-10">
+    <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pb-35 md:pt-8 md:pb-10">
       <header className="grid grid-cols-[44px_1fr_44px] items-center gap-2 py-2 md:hidden">
         <IconButton icon="chevron-left" label={tc("back")} className="size-11" onClick={() => router.back()} />
         <h1 className="t-headline text-center">{t("title")}</h1>
@@ -129,8 +129,8 @@ export function InboxScreen() {
             ))}
           </div>
           {shown.map((i) => (
-            <section key={i.id} className={cx(CARD, "flex flex-col gap-2 py-4")}>
-              <div className="flex items-center gap-3">
+            <section key={i.id} className={cx(CARD, "flex flex-col gap-2.5 py-4")}>
+              <div className="flex items-center gap-2.5">
                 <span className="flex size-9 items-center justify-center rounded-(--radius-m) bg-field">
                   <Icon name={i.kind === "task" ? "nav-tasks" : "nav-finance"} size="small" />
                 </span>

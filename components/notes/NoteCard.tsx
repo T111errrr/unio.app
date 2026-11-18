@@ -9,7 +9,7 @@ export function NoteCard({ note, date, pinLabel, onOpen }: Props) {
     <button
       type="button"
       onClick={onOpen}
-      className="flex min-h-11 w-full flex-col gap-1 rounded-(--radius-card-inner) bg-surface-inset p-4 text-left"
+      className="flex min-h-11 w-full flex-col gap-1.5 rounded-(--radius-card-inner) bg-surface-inset p-4 text-left"
     >
       <span className="flex items-center justify-between gap-2">
         <span className="t-body-em truncate">{note.title}</span>

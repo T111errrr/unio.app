@@ -19,7 +19,7 @@ import { tasksStore, useTasks } from "@/lib/tasks/store";
 import { useReduceMotion, useTheme } from "@/lib/use-appearance";
 import type { Theme } from "@/lib/theme";
 
-const CARD = "rounded-(--radius-card) border border-border bg-surface px-4 shadow-(--shadow-card-soft)";
+const CARD = "rounded-(--radius-card) border border-border bg-surface px-3 py-1 shadow-(--shadow-card-soft)";
 type View = "main" | "appearance" | "notifications" | "shortcuts" | "deleted" | "deleteAccount";
 const SHORTCUTS: { key: ShortcutKey; icon: IconName; hint: boolean }[] = [
   { key: "expense", icon: "expense", hint: true },
@@ -32,7 +32,7 @@ const SHORTCUTS: { key: ShortcutKey; icon: IconName; hint: boolean }[] = [
 
 function Group({ title, children }: { title?: string; children: ReactNode }) {
   return (
-    <section className="flex flex-col gap-2">
+    <section className="flex flex-col gap-4">
       {title && <h2 className="t-footnote-em px-4 tracking-wide text-ink-secondary uppercase">{title}</h2>}
       <div className={CARD}>{children}</div>
     </section>
@@ -109,7 +109,7 @@ export function SettingsScreen() {
   );
 
   const wrap = (children: ReactNode) => (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pt-2 pb-36 md:pt-8 md:pb-10">
+    <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pb-35 md:pt-8 md:pb-10">
       {back()}
       {children}
       {toast && (
@@ -291,11 +291,15 @@ export function SettingsScreen() {
   }
 
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pt-2 pb-36 md:pt-8 md:pb-10">
+    <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pb-35 md:pt-8 md:pb-10">
       {back()}
-      <div className={cx(CARD, "py-3")}>
-        <ListRow title="Jeff" trailing="chevron" leadingIcon="person" showDivider={false} className="min-h-16" />
-        <p className="t-footnote -mt-2 pb-2 pl-12 text-ink-secondary">jeff@email.com</p>
+      <div className="flex items-center gap-3 rounded-(--radius-card) border border-border bg-surface p-4 shadow-(--shadow-card-soft)">
+        <span aria-hidden className="t-title-2 flex size-14 shrink-0 items-center justify-center rounded-(--radius-card) bg-accent text-on-accent">J</span>
+        <span className="flex min-w-0 flex-1 flex-col gap-0.5">
+          <span className="t-headline">Jeff</span>
+          <span className="t-subheadline truncate text-ink-secondary">jeff@email.com</span>
+        </span>
+        <span className="text-ink-tertiary"><Icon name="chevron-right" size="small" /></span>
       </div>
       <Group title={t("general")}>
         <ListRow leadingIcon="nav-today" title={t("views.appearance")} trailing="valueChevron" value={themeLabel} onClick={() => setView("appearance")} />

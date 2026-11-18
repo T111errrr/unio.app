@@ -94,7 +94,7 @@ export function TasksScreen() {
   const emptyTitle = view === "done" ? t("emptyDone") : list === "all" ? t("emptyTitleAll") : t("emptyTitle", { list: listName(list) });
 
   return (
-    <div className={cx("mx-auto w-full px-4 pt-2 pb-36 md:pt-8 md:pb-10", wide && openTask ? "grid max-w-6xl grid-cols-[1fr_380px] items-start gap-6" : "max-w-3xl")}>
+    <div className={cx("mx-auto w-full px-4 pb-35 md:pt-8 md:pb-10", wide && openTask ? "grid max-w-6xl grid-cols-[1fr_380px] items-start gap-6" : "max-w-3xl")}>
     <div className="flex min-w-0 flex-col gap-4">
       <header className="flex min-h-15 items-center gap-2 py-2">
         <div className="min-w-0 flex-1">

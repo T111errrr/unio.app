@@ -18,6 +18,7 @@ import { TransactionDetail } from "./TransactionDetail";
 import { TransferSheet } from "./TransferSheet";
 import { TxRow } from "./TxRow";
 
+const CARD_P = "flex flex-col rounded-(--radius-card) border border-border bg-surface p-4 shadow-(--shadow-card-soft)";
 const CARD = "rounded-(--radius-card) border border-border bg-surface px-4 py-3 shadow-(--shadow-card-soft)";
 type Scenario = "default" | "empty" | "error" | "offline";
 type Filter = "all" | "expense" | "income" | "transfer";
@@ -85,7 +86,7 @@ export function FinanceScreen() {
   const empty = status === "ready" && pockets.length === 0;
 
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pt-2 pb-36 md:pt-8 md:pb-10">
+    <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pb-35 md:pt-8 md:pb-10">
       <header className="flex items-center justify-between gap-2 py-2">
         <h1 className="t-large-title">{t("title")}</h1>
         <IconButton icon="search" label={t("search")} className="size-11 shrink-0" onClick={() => window.dispatchEvent(new Event("unio:search"))} />
@@ -113,7 +114,7 @@ export function FinanceScreen() {
         </section>
       ) : (
         <>
-          <section className="flex flex-col gap-3 rounded-(--radius-card) bg-card-dark px-5 py-5 text-on-card-dark shadow-(--shadow-card-elevated)">
+          <section className="flex flex-col gap-4 rounded-(--radius-card) bg-card-dark p-5 text-on-card-dark shadow-(--shadow-card-elevated)">
             <div className="flex items-start justify-between gap-2">
               <p className="t-subheadline text-on-card-dark-secondary">{t("monthlyBudget")}</p>
               <span className="t-footnote-em rounded-(--radius-full) bg-on-card-dark px-3 py-1 text-card-dark">{monthName}</span>
@@ -130,36 +131,37 @@ export function FinanceScreen() {
             <Button variant="secondary" onClick={() => setBudgetOpen(true)}>{t("seeDetail")}</Button>
           </section>
 
-          <section className={CARD}>
-            <div className="flex min-h-11 items-center justify-between">
+          <section className={cx(CARD_P, "gap-3")}>
+            <div className="flex items-center justify-between gap-2 py-2">
               <h2 className="t-headline">{t("pockets")}</h2>
             </div>
-            <div className="grid grid-cols-2 gap-3 pb-3">
+            <div className="grid grid-cols-2 gap-2.5">
               {pockets.map((p) => (
-                <button key={p.id} type="button" onClick={() => setPocketId(p.id)} className="flex min-h-24 flex-col gap-1 rounded-(--radius-card-inner) bg-surface-inset p-3 text-left">
+                <button key={p.id} type="button" onClick={() => setPocketId(p.id)} className="flex min-h-24 flex-col gap-3.5 rounded-(--radius-card-inner) bg-surface-inset p-3.5 text-left">
                   <span className="t-subheadline flex items-center gap-1.5 text-ink-secondary"><Icon name={POCKET_ICON[p.kind]} size="small" />{p.name}</span>
+                  <span className="flex flex-col">
                   <span className="t-title-3">{compact(p.balance)}</span>
                   <span className={cx("t-caption-1", p.kind === "paylater" ? "text-destructive" : "text-ink-secondary")}>
                     {p.kind === "paylater" && p.dueDay ? t("due", { date: `${p.dueDay} ${new Intl.DateTimeFormat(locale, { month: "short" }).format(ref)}` }) : p.kind === "tabungan" ? t("saving") : t("balanceWord")}
+                  </span>
                   </span>
                 </button>
               ))}
             </div>
             <Button variant="secondary" icon="add" onClick={() => setAddOpen(true)}>{t("addPocket")}</Button>
-            <div className="h-1" />
           </section>
 
-          <section className={CARD}>
-            <div className="flex min-h-11 items-center justify-between">
+          <section className={cx(CARD_P, "gap-3.5")}>
+            <div className="flex items-center justify-between gap-2 py-2">
               <h2 className="t-headline">{t("budgetCategory")}</h2>
-              <button type="button" onClick={() => setBudgetOpen(true)} className="t-subheadline flex min-h-11 items-center text-ink-secondary">{t("manage")}</button>
+              <button type="button" onClick={() => setBudgetOpen(true)} className="t-subheadline relative flex items-center text-ink-secondary before:absolute before:-inset-x-2 before:-inset-y-3 before:content-['']">{t("manage")}</button>
             </div>
-            <div className="flex flex-col pb-2">
+            <div className="flex flex-col gap-3.5">
               {budget.categories.slice(0, 3).map((c) => {
                 const s = categorySpent(transactions, c.id, ref);
                 const r = c.limit ? s / c.limit : 0;
                 return (
-                  <div key={c.id} className="flex flex-col gap-1.5 py-2">
+                  <div key={c.id} className="flex flex-col gap-2">
                     <div className="flex items-baseline justify-between gap-2">
                       <span className="t-subheadline-em">{c.emoji} {c.name}</span>
                       <span className={cx("t-footnote", r >= 1 ? "text-expense" : r >= 0.8 ? "text-warning" : "text-ink-secondary")}>{compact(s)} / {compact(c.limit)}</span>
@@ -173,8 +175,8 @@ export function FinanceScreen() {
             </div>
           </section>
 
-          <section className={CARD}>
-            <div className="flex min-h-11 items-center justify-between">
+          <section className={cx(CARD_P, "gap-1")}>
+            <div className="flex items-center justify-between gap-2 py-2">
               <h2 className="t-headline">{t("transactions")}</h2>
             </div>
             <div className="flex gap-2 pb-2" role="group" aria-label={t("filter")}>

@@ -63,7 +63,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         <SidebarBody variant="full" onSearch={() => setSearchOpen(true)} onCapture={() => setCaptureOpen(true)} />
       </aside>
 
-      <main className="min-w-0 flex-1 pb-28 md:pb-0">{children}</main>
+      <main className="min-w-0 flex-1">{children}</main>
 
       <TabBar onCapture={() => setCaptureOpen(true)} />
       <CaptureSheet open={captureOpen} onClose={() => setCaptureOpen(false)} />

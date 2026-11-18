@@ -66,7 +66,7 @@ export function AppearanceSettings() {
   const [reduceMotion, setReduceMotion] = useReduceMotion();
 
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 py-6 md:px-8 md:py-10">
+    <div className="mx-auto flex w-full max-w-3xl flex-col gap-6 px-4 pt-6 pb-35 md:px-8 md:py-10">
       <header className="flex flex-col gap-1">
         <h1 className="t-title-1">{t("title")}</h1>
         <p className="t-subheadline hidden text-ink-secondary md:block">{t("subtitle")}</p>

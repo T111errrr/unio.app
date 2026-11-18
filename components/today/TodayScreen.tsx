@@ -22,6 +22,7 @@ import { TASK_LISTS, type TaskListId } from "@/lib/tasks/types";
 import { useTheme } from "@/lib/use-appearance";
 
 const CARD = "rounded-(--radius-card) border border-border bg-surface px-4 py-3 shadow-(--shadow-card-soft)";
+const CARD_P = "flex flex-col rounded-(--radius-card) border border-border bg-surface p-4 shadow-(--shadow-card-soft)";
 const DAILY_BUDGET = 260_000;
 type TodayTab = "todo" | "done" | "pending";
 type Scenario = "default" | "empty" | "error" | "offline";
@@ -37,7 +38,7 @@ const short = (n: number) =>
 
 function CardHeader({ title, action }: { title: string; action?: ReactNode }) {
   return (
-    <div className="flex min-h-11 items-center justify-between">
+    <div className="flex items-center justify-between gap-2 py-2">
       <h2 className="t-headline">{title}</h2>
       {action}
     </div>
@@ -49,7 +50,7 @@ function Ring({ ratio, label }: { ratio: number; label: string }) {
   const c = 2 * Math.PI * r;
   const v = Math.min(Math.max(ratio, 0), 1);
   return (
-    <svg viewBox="0 0 36 36" className="size-9 shrink-0 -rotate-90" role="img" aria-label={label}>
+    <svg viewBox="0 0 36 36" className="size-5 shrink-0 -rotate-90" role="img" aria-label={label}>
       <circle cx="18" cy="18" r={r} fill="none" strokeWidth="4" className="stroke-field" />
       <circle cx="18" cy="18" r={r} fill="none" strokeWidth="4" strokeLinecap="round" strokeDasharray={`${c * v} ${c}`} className={ratio > 1 ? "stroke-expense" : "stroke-accent"} />
     </svg>
@@ -60,9 +61,9 @@ function MiniBars({ done, total }: { done: number; total: number }) {
   const n = Math.min(Math.max(total, 1), 7);
   const filled = total === 0 ? 0 : Math.round((done / total) * n);
   return (
-    <div aria-hidden className="flex h-4 items-end gap-1">
+    <div aria-hidden className="flex h-5 items-end gap-0.5">
       {Array.from({ length: n }, (_, i) => (
-        <span key={i} className={cx("w-1.5 rounded-(--radius-full)", i < filled ? "h-4 bg-accent" : "h-2 bg-field")} />
+        <span key={i} className={cx("w-0.5 rounded-(--radius-full)", i < filled ? "h-5 bg-accent" : "h-2.5 bg-field")} />
       ))}
     </div>
   );
@@ -70,7 +71,7 @@ function MiniBars({ done, total }: { done: number; total: number }) {
 
 function SeeAll({ href, label }: { href: "/tasks" | "/finance" | "/notes"; label: string }) {
   return (
-    <Link href={href} className="t-subheadline flex min-h-11 items-center text-ink-secondary">
+    <Link href={href} className="t-subheadline relative flex items-center text-ink-secondary before:absolute before:-inset-x-2 before:-inset-y-3 before:content-['']">
       {label}
     </Link>
   );
@@ -154,7 +155,7 @@ export function TodayScreen() {
   const error = status === "error";
 
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pt-2 pb-36 md:pt-8 md:pb-10">
+    <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pt-2 pb-35 md:pt-8 md:pb-10">
       <header className="flex items-start gap-2 py-2">
         <div className="min-w-0 flex-1">
           <p className="t-footnote tracking-wide text-ink-secondary uppercase">{now ? dateLong.format(now) : " "}</p>
@@ -212,30 +213,30 @@ export function TodayScreen() {
         </div>
       ) : (
         <>
-          <section className={CARD}>
+          <section className={cx(CARD_P, "gap-3")}>
             <CardHeader title={t("summary")} />
-            <div className="grid grid-cols-2 gap-3 pt-1 pb-1">
-              <div className="flex flex-col gap-1 rounded-(--radius-card-inner) bg-surface-inset p-3">
-                <span className="t-subheadline flex items-center gap-1.5 text-ink-secondary">
-                  <Icon name="nav-finance" size="small" />
-                  {t("expenseShort")}
-                </span>
-                <div className="mt-1 flex items-center justify-between gap-2">
-                  <span className="t-title-3">Rp{short(spent)}</span>
+            <div className="grid grid-cols-2 gap-2.5">
+              <div className="flex flex-col gap-3.5 rounded-(--radius-card-inner) bg-surface-inset p-3.5">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-ink"><Icon name="nav-finance" size="small" /></span>
+                  <span className="t-subheadline min-w-0 flex-1 truncate">{t("expenseShort")}</span>
                   <Ring ratio={spent / DAILY_BUDGET} label={t("budgetUsed", { percent: Math.round((spent / DAILY_BUDGET) * 100) })} />
                 </div>
-                <span className="t-caption-1 text-ink-secondary">{t("ofBudget", { amount: short(DAILY_BUDGET) })}</span>
+                <div className="flex flex-col">
+                  <span className="t-title-3">Rp{short(spent)}</span>
+                  <span className="t-caption-1 text-ink-secondary">{t("ofBudget", { amount: short(DAILY_BUDGET) })}</span>
+                </div>
               </div>
-              <div className="flex flex-col gap-1 rounded-(--radius-card-inner) bg-surface-inset p-3">
-                <span className="t-subheadline flex items-center gap-1.5 text-ink-secondary">
-                  <Icon name="nav-tasks" size="small" />
-                  {t("tasksShort")}
-                </span>
-                <div className="mt-1 flex items-center justify-between gap-2">
-                  <span className="t-title-3">{`${doneCount}/${todayTasks.length}`}</span>
+              <div className="flex flex-col gap-3.5 rounded-(--radius-card-inner) bg-surface-inset p-3.5">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-ink"><Icon name="nav-tasks" size="small" /></span>
+                  <span className="t-subheadline min-w-0 flex-1 truncate">{t("tasksShort")}</span>
                   <MiniBars done={doneCount} total={todayTasks.length} />
                 </div>
-                <span className="t-caption-1 text-ink-secondary">{todayTasks.length === 0 ? t("noTasksYet") : t("doneLabel")}</span>
+                <div className="flex flex-col">
+                  <span className="t-title-3">{`${doneCount}/${todayTasks.length}`}</span>
+                  <span className="t-caption-1 text-ink-secondary">{todayTasks.length === 0 ? t("noTasksYet") : t("doneLabel")}</span>
+                </div>
               </div>
             </div>
           </section>
@@ -253,7 +254,7 @@ export function TodayScreen() {
             </Link>
           )}
 
-          <section className={CARD}>
+          <section className={cx(CARD_P, "gap-1")}>
             <CardHeader title={t("tasksToday")} action={<SeeAll href="/tasks" label={t("seeAll")} />} />
             {todayTasks.length === 0 ? (
               <EmptyBlock icon="nav-tasks" title={t("emptyTasksTitle")} body={tt("emptyBody")} action={tt("addTask")} href="/tasks" />
@@ -313,7 +314,7 @@ export function TodayScreen() {
             )}
           </section>
 
-          <section className={CARD}>
+          <section className={cx(CARD_P, "gap-1")}>
             <CardHeader
               title={t("txToday")}
               action={
@@ -328,7 +329,7 @@ export function TodayScreen() {
               <EmptyBlock icon="nav-finance" title={t("emptyTxTitle")} body={t("emptyTxBody")} action={t("addTx")} href="/finance" />
             ) : (
               todayTx.map((x, i) => (
-                <div key={x.id} className="relative flex items-center gap-3 py-3">
+                <div key={x.id} className="relative flex items-center gap-3 px-1 py-2.75">
                   <span className="flex size-11 shrink-0 items-center justify-center rounded-(--radius-card-inner) bg-field">
                     <Icon name={x.kind === "income" ? "income" : x.kind === "transfer" ? "transfer" : "expense"} size="small" />
                   </span>
@@ -351,9 +352,9 @@ export function TodayScreen() {
           </section>
 
           {lastNote && (
-            <section className={CARD}>
+            <section className={cx(CARD_P, "gap-3")}>
               <CardHeader title={t("lastNote")} action={<SeeAll href="/notes" label={t("seeAll")} />} />
-              <Link href="/notes" className="flex flex-col gap-1 rounded-(--radius-card-inner) bg-surface-inset p-4">
+              <Link href="/notes" className="flex flex-col gap-1.5 rounded-(--radius-card-inner) bg-surface-inset p-4">
                 <span className="flex items-center justify-between gap-2">
                   <span className="t-body-em">{lastNote.title}</span>
                   {lastNote.pinned && <Icon name="pin" size="small" filled />}

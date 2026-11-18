@@ -9,7 +9,7 @@ export function TxRow({ tx, categoryLabel, right, onOpen, divider = true }: Prop
   const sign = tx.kind === "income" ? "+" : tx.kind === "expense" ? "−" : "";
   const sub = tx.kind === "transfer" ? `${tx.pocket} → ${tx.toPocket}` : `${categoryLabel} · ${tx.pocket}`;
   return (
-    <button type="button" onClick={onOpen} className="relative flex min-h-14 w-full items-center gap-3 py-3 text-left">
+    <button type="button" onClick={onOpen} className="relative flex min-h-14 w-full items-center gap-3 px-1 py-2.75 text-left">
       <span className="flex size-11 shrink-0 items-center justify-center rounded-(--radius-card-inner) bg-field">
         <Icon name={tx.kind === "income" ? "income" : tx.kind === "expense" ? "expense" : "transfer"} size="small" />
       </span>

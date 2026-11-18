@@ -15,6 +15,8 @@ import { buildRecap, rangeOf, shift, type Period } from "@/lib/recap/calc";
 import { tasksStore, useTasks } from "@/lib/tasks/store";
 import { ExportSheet } from "./ExportSheet";
 
+const CARD_P = "flex flex-col rounded-(--radius-card) border border-border bg-surface p-4 shadow-(--shadow-card-soft)";
+const CARD_L = "flex flex-col gap-4 rounded-(--radius-card) border border-border bg-surface p-5 shadow-(--shadow-card-soft)";
 const CARD = "rounded-(--radius-card) border border-border bg-surface px-4 py-3 shadow-(--shadow-card-soft)";
 type Scenario = "default" | "empty" | "error" | "offline";
 const SLICE = ["stroke-accent", "stroke-ink-secondary", "stroke-ink-tertiary", "stroke-field"] as const;
@@ -25,7 +27,7 @@ function Donut({ parts, label, centerTop, centerBottom }: { parts: number[]; lab
   const c = 2 * Math.PI * r;
   let offset = 0;
   return (
-    <div className="relative size-28 shrink-0">
+    <div className="relative size-30 shrink-0">
       <svg viewBox="0 0 100 100" className="size-full -rotate-90" role="img" aria-label={label}>
         {parts.map((p, i) => {
           const len = p * c;
@@ -111,7 +113,7 @@ export function RecapScreen() {
   }
 
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pt-2 pb-36 md:pt-8 md:pb-10">
+    <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pb-35 md:pt-8 md:pb-10">
       <header className="flex items-center justify-between gap-2 py-2">
         <h1 className="t-large-title">{t("title")}</h1>
         <IconButton icon="export" label={t("exportTitle")} className="size-11 shrink-0" onClick={() => setExportOpen(true)} />
@@ -159,8 +161,8 @@ export function RecapScreen() {
         </section>
       ) : (
         <>
-          <section className={CARD}>
-            <div className="grid grid-cols-2 gap-3 py-1">
+          <section className={CARD_P}>
+            <div className="grid grid-cols-2 gap-2.5">
               {period !== "day" && (
                 <Stat icon="income" title={t("income")} value={compact(data.income)} sub={t(period === "week" ? "thisWeek" : "thisMonth")} />
               )}
@@ -172,21 +174,23 @@ export function RecapScreen() {
 
           {period !== "day" && data.spent > 0 && (
             <>
-              <section className={CARD}>
-                <p className="t-subheadline pt-1 text-ink-secondary">{t(period === "week" ? "spendWeek" : "spendMonth")}</p>
-                <p className="t-title-1">{rupiah(data.spent)}</p>
-                <div className="flex h-36 items-end gap-2 pt-4" role="img" aria-label={t("barsLabel")}>
+              <section className={CARD_L}>
+                <div className="flex flex-col gap-0.5">
+                  <p className="t-subheadline text-ink-secondary">{t(period === "week" ? "spendWeek" : "spendMonth")}</p>
+                  <p className="t-title-2">{rupiah(data.spent)}</p>
+                </div>
+                <div className="flex h-35 items-end justify-between" role="img" aria-label={t("barsLabel")}>
                   {data.bars.map((b, i) => (
-                    <div key={i} className="flex h-full flex-1 flex-col items-center justify-end gap-1.5">
-                      <div className={cx("w-full rounded-(--radius-m)", i === hiIdx ? "bg-accent" : "bg-field")} style={{ height: `${Math.max(Math.round((b.value / maxBar) * 100), 3)}%` }} />
+                    <div key={i} className="flex h-full flex-col items-center justify-end gap-1.5">
+                      <div className={cx("w-7 rounded-(--radius-m)", i === hiIdx ? "bg-accent" : "bg-field")} style={{ height: `${Math.max(Math.round((b.value / maxBar) * 100), 3)}%` }} />
                       <span className="t-caption-1 text-ink-secondary">{b.label}</span>
                     </div>
                   ))}
                 </div>
               </section>
 
-              <section className={cx(CARD, "pb-4")}>
-                <p className="t-subheadline pt-1 pb-3 text-ink-secondary">{t("categoryShare")}</p>
+              <section className={CARD_L}>
+                <p className="t-subheadline text-ink-secondary">{t("categoryShare")}</p>
                 <div className="flex items-center gap-5">
                   <Donut
                     parts={[...parts, rest > 0.001 ? rest : 0]}
@@ -194,17 +198,17 @@ export function RecapScreen() {
                     centerTop={`${top ? Math.round((top.value / (total || 1)) * 100) : 0}%`}
                     centerBottom={top ? catName(top.id) : "-"}
                   />
-                  <ul className="flex flex-1 flex-col gap-2">
+                  <ul className="flex flex-1 flex-col gap-2.5">
                     {data.categories.slice(0, 3).map((c, i) => (
                       <li key={c.id} className="flex items-center gap-2">
-                        <span aria-hidden className={cx("size-3 rounded-(--radius-m)", DOT[i])} />
+                        <span aria-hidden className={cx("size-2.5 rounded-(--radius-xs)", DOT[i])} />
                         <span className="t-subheadline flex-1">{catName(c.id)}</span>
                         <span className="t-subheadline text-ink-secondary">{Math.round((c.value / (total || 1)) * 100)}%</span>
                       </li>
                     ))}
                     {rest > 0.001 && (
                       <li className="flex items-center gap-2">
-                        <span aria-hidden className={cx("size-3 rounded-(--radius-m)", DOT[3])} />
+                        <span aria-hidden className={cx("size-2.5 rounded-(--radius-xs)", DOT[3])} />
                         <span className="t-subheadline flex-1">{t("other")}</span>
                         <span className="t-subheadline text-ink-secondary">{Math.round(rest * 100)}%</span>
                       </li>
@@ -216,8 +220,8 @@ export function RecapScreen() {
           )}
 
           {period === "day" && (
-            <section className={CARD}>
-              <h2 className="t-headline min-h-11 leading-11">{t("spendByCategory")}</h2>
+            <section className={cx(CARD_P, "gap-1")}>
+              <h2 className="t-headline py-2">{t("spendByCategory")}</h2>
               {data.categories.length === 0 ? (
                 <p className="t-subheadline py-6 text-center text-ink-secondary">{t("noSpending")}</p>
               ) : (
@@ -233,12 +237,12 @@ export function RecapScreen() {
             </section>
           )}
 
-          <section className={CARD}>
-            <div className="flex min-h-11 items-center justify-between">
-              <h2 className="t-headline flex items-center gap-2"><Icon name="mic" size="small" />{t("siriTitle")}</h2>
+          <section className={cx(CARD_P, "gap-2.5")}>
+            <div className="flex items-center justify-between gap-2">
+              <h2 className="t-headline flex items-center gap-2"><Icon name="mic" size="medium" />{t("siriTitle")}</h2>
               <IconButton icon="mic" label={t("play")} className="size-11" onClick={speak} />
             </div>
-            <p className="t-accent-serif-sm pt-1 pb-2 text-ink-secondary">&ldquo;{summary}&rdquo;</p>
+            <p className="t-accent-serif-sm text-ink-secondary">&ldquo;{summary}&rdquo;</p>
           </section>
         </>
       )}
@@ -250,10 +254,12 @@ export function RecapScreen() {
 
 function Stat({ icon, title, value, sub }: { icon: "income" | "expense" | "nav-tasks" | "calendar"; title: string; value: string; sub: string }) {
   return (
-    <div className="flex flex-col gap-1 rounded-(--radius-card-inner) bg-surface-inset p-3">
-      <span className="t-subheadline flex items-center gap-1.5 text-ink-secondary"><Icon name={icon} size="small" />{title}</span>
-      <span className="t-title-3 mt-1">{value}</span>
-      <span className="t-caption-1 text-ink-secondary">{sub}</span>
+    <div className="flex flex-col gap-3.5 rounded-(--radius-card-inner) bg-surface-inset p-3.5">
+      <span className="t-subheadline flex items-center gap-1.5"><Icon name={icon} size="small" />{title}</span>
+      <span className="flex flex-col">
+        <span className="t-title-3">{value}</span>
+        <span className="t-caption-1 text-ink-secondary">{sub}</span>
+      </span>
     </div>
   );
 }

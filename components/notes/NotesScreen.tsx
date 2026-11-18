@@ -14,6 +14,7 @@ import { notesStore, useNotes, type Note } from "@/lib/notes/store";
 import { NoteCard } from "./NoteCard";
 import { NoteEditor } from "./NoteEditor";
 
+const CARD_P = "flex flex-col gap-2.5 rounded-(--radius-card) border border-border bg-surface p-4 shadow-(--shadow-card-soft)";
 const CARD = "rounded-(--radius-card) border border-border bg-surface px-4 py-3 shadow-(--shadow-card-soft)";
 type Scenario = "default" | "empty" | "error" | "offline";
 type Sort = "recent" | "title";
@@ -74,7 +75,7 @@ export function NotesScreen() {
   const error = status === "error";
 
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pt-2 pb-36 md:pt-8 md:pb-10">
+    <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pb-35 md:pt-8 md:pb-10">
       <header className="flex items-center justify-between gap-2 py-2">
         <h1 className="t-large-title">{t("title")}</h1>
         <IconButton
@@ -166,9 +167,9 @@ export function NotesScreen() {
         </div>
       ) : searching && q ? (
         <>
-          <section className={CARD}>
-            <h2 className="t-headline min-h-11 leading-11">{t("results", { count: results.length, query: query.trim() })}</h2>
-            <div className="flex flex-col gap-3 pb-1">{results.map(card)}</div>
+          <section className={CARD_P}>
+            <h2 className="t-headline py-2">{t("results", { count: results.length, query: query.trim() })}</h2>
+            <div className="flex flex-col gap-2.5">{results.map(card)}</div>
           </section>
           <section className={cx(CARD, "flex flex-col items-center gap-1 py-4 text-center")}>
             <p className="t-body-em">{t("notFoundTitle")}</p>
@@ -182,20 +183,20 @@ export function NotesScreen() {
       ) : (
         <>
           {pinned.length > 0 && (
-            <section className={CARD}>
-              <h2 className="t-headline min-h-11 leading-11">{t("pinnedTitle")}</h2>
-              <div className="flex flex-col gap-3 pb-1">{pinned.map(card)}</div>
+            <section className={CARD_P}>
+              <h2 className="t-headline py-2">{t("pinnedTitle")}</h2>
+              <div className="flex flex-col gap-2.5">{pinned.map(card)}</div>
             </section>
           )}
           {rest.length > 0 && (
-            <section className={CARD}>
-              <div className="flex min-h-11 items-center justify-between">
+            <section className={CARD_P}>
+              <div className="flex items-center justify-between gap-2 py-2">
                 <h2 className="t-headline">{t("latest")}</h2>
-                <button type="button" onClick={() => setSort(sort === "recent" ? "title" : "recent")} className="t-subheadline flex min-h-11 items-center text-ink-secondary">
+                <button type="button" onClick={() => setSort(sort === "recent" ? "title" : "recent")} className="t-subheadline relative flex items-center text-ink-secondary before:absolute before:-inset-x-2 before:-inset-y-3 before:content-['']">
                   {sort === "recent" ? t("sort") : t("sortTitle")}
                 </button>
               </div>
-              <div className="flex flex-col gap-3 pb-1">{rest.map(card)}</div>
+              <div className="flex flex-col gap-2.5">{rest.map(card)}</div>
             </section>
           )}
         </>
