@@ -53,6 +53,9 @@ export const tasksStore = {
   remove(id: string) {
     set({ tasks: state.tasks.map((t) => (t.id === id ? { ...t, deletedAt: new Date().toISOString() } : t)) });
   },
+  restore(id: string) {
+    set({ tasks: state.tasks.map((t) => (t.id === id ? { ...t, deletedAt: null } : t)) });
+  },
   retrySync() {
     set({ unsynced: false });
   },

@@ -14,6 +14,8 @@ import { cx } from "@/lib/cx";
 import { filterTasks, GROUP_ORDER, groupKeyOf, isOverdue, dayDiff, type TaskGroupKey } from "@/lib/tasks/group";
 import { tasksStore, useTasks } from "@/lib/tasks/store";
 import { TASK_LISTS, type Task, type TaskListId, type TasksView } from "@/lib/tasks/types";
+import { Dialog } from "@/components/ui/Dialog";
+import { Toast } from "@/components/ui/Toast";
 import { Sheet } from "@/components/ui/Sheet";
 import { useMediaQuery } from "@/lib/use-media-query";
 import { TaskDetail } from "./TaskDetail";
@@ -32,6 +34,8 @@ export function TasksScreen() {
   const [view, setView] = useState<TasksView>("upcoming");
   const [now, setNow] = useState<Date | null>(null);
   const [openId, setOpenId] = useState<string | null>(null);
+  const [deleteId, setDeleteId] = useState<string | null>(null);
+  const [undoId, setUndoId] = useState<string | null>(null);
   const wide = useMediaQuery("(min-width: 1024px)");
   const openTask = tasks.find((x) => x.id === openId && !x.deletedAt) ?? null;
 
@@ -46,6 +50,22 @@ export function TasksScreen() {
   const visible = useMemo(() => (now ? filterTasks(tasks, list, view, now) : []), [tasks, list, view, now]);
   const upcomingCount = useMemo(() => (now ? filterTasks(tasks, "all", "upcoming", now).length : 0), [tasks, now]);
   const overdueCount = useMemo(() => (now ? tasks.filter((x) => isOverdue(x, now)).length : 0), [tasks, now]);
+
+  const deleting = tasks.find((x) => x.id === deleteId) ?? null;
+
+  useEffect(() => {
+    if (!undoId) return;
+    const timer = setTimeout(() => setUndoId(null), 5000);
+    return () => clearTimeout(timer);
+  }, [undoId]);
+
+  function confirmDelete() {
+    if (!deleteId) return;
+    tasksStore.remove(deleteId);
+    if (openId === deleteId) setOpenId(null);
+    setUndoId(deleteId);
+    setDeleteId(null);
+  }
 
   const listName = (id: TaskListId) => t(`lists.${id}`);
 
@@ -177,6 +197,12 @@ export function TasksScreen() {
               priorityLabel={t("priority")}
               onToggle={() => tasksStore.toggle(task.id)}
               onOpen={() => setOpenId(task.id)}
+              swipe={{
+                doneLabel: t("views.done"),
+                deleteLabel: tc("delete"),
+                onDone: () => tasksStore.toggle(task.id),
+                onDelete: () => setDeleteId(task.id),
+              }}
             />
           ))}
         </section>
@@ -184,12 +210,33 @@ export function TasksScreen() {
     </div>
       {openTask && wide && (
         <aside className="sticky top-8 rounded-(--radius-card) border border-border bg-surface p-5 shadow-(--shadow-card-soft)">
-          <TaskDetail key={openTask.id} task={openTask} showHeader onClose={() => setOpenId(null)} />
+          <TaskDetail key={openTask.id} task={openTask} showHeader onClose={() => setOpenId(null)} onDelete={() => setDeleteId(openTask.id)} />
         </aside>
       )}
       <Sheet open={!!openTask && !wide} onClose={() => setOpenId(null)} title={t("detail.title")}>
-        {openTask && !wide && <TaskDetail key={openTask.id} task={openTask} onClose={() => setOpenId(null)} />}
+        {openTask && !wide && <TaskDetail key={openTask.id} task={openTask} onClose={() => setOpenId(null)} onDelete={() => setDeleteId(openTask.id)} />}
       </Sheet>
+      <Dialog
+        open={!!deleting}
+        onClose={() => setDeleteId(null)}
+        type="destructive"
+        title={t("delete.title")}
+        message={deleting ? t("delete.message", { title: deleting.title }) : undefined}
+        confirmLabel={tc("delete")}
+        onConfirm={confirmDelete}
+      />
+      {undoId && (
+        <div className="fixed inset-x-0 bottom-28 z-50 flex justify-center md:bottom-6">
+          <Toast
+            message={t("delete.toast")}
+            actionLabel={tc("undo")}
+            onAction={() => {
+              tasksStore.restore(undoId);
+              setUndoId(null);
+            }}
+          />
+        </div>
+      )}
     </div>
   );
 }
