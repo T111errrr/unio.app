@@ -57,8 +57,8 @@ Header `x-api-key`; `request_id` untuk anti entri ganda; 60 permintaan/menit per
 | Unio Capture | "Hey Siri, Unio capture" | Parser memilih jenisnya; bila ragu, Shortcut menanyakan jenis lewat menu |
 | Unio Summary | "Hey Siri, Unio summary" | Siri membacakan rekap hari ini |
 
-Catatan: PRD mendaftar 6 shortcut, layar Shortcuts & Siri di Figma menampilkan 5 (tanpa Unio Income).
-Tanyakan Jeff saat mengerjakan tugas 2.07/2.08 apakah Unio Income ditambahkan ke layar.
+Keputusan Jeff (18 Nov 2026): **Unio Income dipertahankan** — 6 shortcut. Layar Shortcuts & Siri di Figma sudah diperbarui
+(baris Unio Income di bawah Unio Expense, tanpa Back Tap karena iOS hanya punya 2× dan 3×, di semua layar mobile/desktop/rail, light dan dark).
 
 Urutan kategorisasi (PRD):
 1. Kata kunci buatan pengguna di kategori.
@@ -87,5 +87,9 @@ Apple Watch, Android native, monetisasi, lampiran besar.
 ## Keputusan terbuka
 
 - Desain layar setup awal (saldo awal, rekening, kantong) — dibutuhkan sebelum tugas 3.01.
-- Lucide vs Phosphor untuk ikon (sementara Lucide).
 - Domain: `*.vercel.app` dulu atau beli domain.
+
+## Keputusan yang sudah diambil
+
+- Ikon: **Lucide** (Jeff, 18 Nov 2026).
+- Unio Income tetap ada (lihat bagian API untuk Siri Shortcuts).
