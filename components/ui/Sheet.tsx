@@ -37,8 +37,8 @@ export function Sheet({ open, onClose, title, children }: Props) {
       }}
       aria-labelledby={titleId}
       className={cx(
-        "fixed inset-x-0 top-auto bottom-0 m-0 max-h-[85dvh] w-full max-w-none overflow-y-auto bg-surface p-0 text-ink",
-        "rounded-t-(--radius-card) rounded-b-none shadow-(--shadow-large) backdrop:bg-scrim",
+        "motion-sheet fixed inset-x-0 top-auto bottom-0 m-0 max-h-[85dvh] w-full max-w-none overflow-y-auto bg-surface p-0 text-ink",
+        "rounded-t-(--radius-card) rounded-b-none shadow-(--shadow-large)",
         "md:inset-0 md:m-auto md:h-fit md:max-w-md md:rounded-(--radius-card)",
       )}
     >

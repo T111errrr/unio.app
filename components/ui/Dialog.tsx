@@ -39,8 +39,8 @@ export function Dialog({ open, onClose, type = "confirm", title, message, confir
       }}
       aria-labelledby={titleId}
       className={cx(
-        "m-auto w-75 max-w-[calc(100%-2rem)] rounded-(--radius-card) bg-surface p-0 text-ink",
-        "shadow-(--shadow-large) backdrop:bg-scrim",
+        "motion-dialog m-auto w-75 max-w-[calc(100%-2rem)] rounded-(--radius-card) bg-surface p-0 text-ink",
+        "shadow-(--shadow-large)",
       )}
     >
       <div className="flex flex-col gap-2 px-5 pt-6 pb-4">
