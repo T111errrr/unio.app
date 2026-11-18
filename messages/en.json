@@ -15,7 +15,8 @@
     "search": "Search",
     "quickCapture": "Quick capture",
     "expandSidebar": "Open sidebar",
-    "collapseSidebar": "Close sidebar"
+    "collapseSidebar": "Close sidebar",
+    "main": "Main navigation"
   },
   "common": {
     "save": "Save",
