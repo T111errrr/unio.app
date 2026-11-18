@@ -185,5 +185,46 @@
     "sampleNotif3Meta": "UNIO · now",
     "sampleNotif3Title": "Money out −Rp35.000",
     "sampleNotif3Body": "Lunch · Rp420.000 left"
+  },
+  "tasks": {
+    "lists": {
+      "all": "All",
+      "kantor": "Work",
+      "pribadi": "Personal",
+      "ide": "Ideas",
+      "add": "+ List",
+      "label": "Choose a list"
+    },
+    "views": {
+      "label": "Task view",
+      "today": "Today",
+      "upcoming": "Upcoming",
+      "done": "Done"
+    },
+    "groups": {
+      "today": "Today",
+      "tomorrow": "Tomorrow",
+      "week": "This week",
+      "later": "Later",
+      "none": "No date"
+    },
+    "yesterday": "Yesterday",
+    "weekly": "Every week",
+    "newTask": "New task",
+    "addTask": "Add task",
+    "summary": "{count} upcoming · {overdue} overdue",
+    "emptyTitle": "No tasks in {list}",
+    "emptyTitleAll": "No tasks yet",
+    "emptyDone": "No completed tasks yet",
+    "emptyBody": "Add with the + button or say \"Hey Siri, Unio task\".",
+    "errorTitle": "Couldn't load tasks",
+    "errorBody": "Check your connection, then try again.",
+    "unsynced": "Not synced",
+    "unsyncedBody": "Changes are saved on this device.",
+    "markDone": "Mark as done",
+    "markOpen": "Mark as not done",
+    "priority": "High priority",
+    "title": "Tasks",
+    "search": "Search"
   }
 }

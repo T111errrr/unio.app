@@ -188,4 +188,12 @@ body {
     line-height: 32px;
     letter-spacing: 0;
   }
+  /* Versi kecil untuk subjudul layar desktop (Figma: Instrument Serif Italic 20/24). */
+  .t-accent-serif-sm {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 20px;
+    line-height: 24px;
+  }
 }
