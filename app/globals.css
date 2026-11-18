@@ -1,6 +1,53 @@
 @import "tailwindcss";
 @import "../styles/tokens.css";
 
+/*
+ * Menghubungkan token Figma (styles/tokens.css) ke Tailwind.
+ * `inline` membuat kelas Tailwind membaca var(--unio-*) langsung, jadi warna ikut berganti
+ * saat tema light/dark/sistem berubah (tidak perlu varian `dark:`).
+ *
+ * Contoh pakai:  bg-surface  text-ink  text-ink-secondary  border-divider  bg-accent text-on-accent
+ *
+ * Radius, bayangan, jarak, dan durasi memakai variabel token langsung (nama sama dengan Figma):
+ *   rounded-(--radius-card)  shadow-(--shadow-card-soft)  p-(--spacing-16)  duration-(--duration-push)
+ */
+@theme inline {
+  --color-accent: var(--unio-accent);
+  --color-on-accent: var(--unio-on-accent);
+  --color-background: var(--unio-background);
+  --color-surface: var(--unio-surface);
+  --color-surface-inset: var(--unio-surface-inset);
+  --color-field: var(--unio-field);
+  --color-border: var(--unio-border);
+  --color-divider: var(--unio-divider);
+  --color-track: var(--unio-track);
+  --color-disabled: var(--unio-disabled);
+  --color-on-disabled: var(--unio-on-disabled);
+
+  --color-ink: var(--unio-text-primary);
+  --color-ink-secondary: var(--unio-text-secondary);
+  --color-ink-tertiary: var(--unio-text-tertiary);
+
+  --color-card-dark: var(--unio-card-dark);
+  --color-on-card-dark: var(--unio-on-card-dark);
+  --color-on-card-dark-secondary: var(--unio-on-card-dark-secondary);
+  --color-track-dark: var(--unio-track-dark);
+  --color-on-light-chip: var(--unio-on-light-chip);
+
+  --color-income: var(--unio-income);
+  --color-expense: var(--unio-expense);
+  --color-transfer: var(--unio-transfer);
+  --color-warning: var(--unio-warning);
+  --color-paylater: var(--unio-paylater);
+  --color-success: var(--unio-success);
+  --color-destructive: var(--unio-destructive);
+
+  --color-scrim: var(--unio-scrim);
+  --color-fade-clear: var(--unio-fade-clear);
+  --color-halo: var(--unio-halo);
+  --color-halo-clear: var(--unio-halo-clear);
+}
+
 html,
 body {
   background: var(--unio-background);
