@@ -14,6 +14,9 @@ import { cx } from "@/lib/cx";
 import { filterTasks, GROUP_ORDER, groupKeyOf, isOverdue, dayDiff, type TaskGroupKey } from "@/lib/tasks/group";
 import { tasksStore, useTasks } from "@/lib/tasks/store";
 import { TASK_LISTS, type Task, type TaskListId, type TasksView } from "@/lib/tasks/types";
+import { Sheet } from "@/components/ui/Sheet";
+import { useMediaQuery } from "@/lib/use-media-query";
+import { TaskDetail } from "./TaskDetail";
 import { TaskRow } from "./TaskRow";
 
 const CARD = "rounded-(--radius-card) border border-border bg-surface px-4 py-3 shadow-(--shadow-card-soft)";
@@ -28,6 +31,9 @@ export function TasksScreen() {
   const [list, setList] = useState<TaskListId | "all">("all");
   const [view, setView] = useState<TasksView>("upcoming");
   const [now, setNow] = useState<Date | null>(null);
+  const [openId, setOpenId] = useState<string | null>(null);
+  const wide = useMediaQuery("(min-width: 1024px)");
+  const openTask = tasks.find((x) => x.id === openId && !x.deletedAt) ?? null;
 
   useEffect(() => {
     setNow(new Date());
@@ -68,7 +74,8 @@ export function TasksScreen() {
   const emptyTitle = view === "done" ? t("emptyDone") : list === "all" ? t("emptyTitleAll") : t("emptyTitle", { list: listName(list) });
 
   return (
-    <div className="mx-auto flex w-full max-w-3xl flex-col gap-4 px-4 pt-2 pb-36 md:pt-8 md:pb-10">
+    <div className={cx("mx-auto w-full px-4 pt-2 pb-36 md:pt-8 md:pb-10", wide && openTask ? "grid max-w-6xl grid-cols-[1fr_380px] items-start gap-6" : "max-w-3xl")}>
+    <div className="flex min-w-0 flex-col gap-4">
       <header className="flex min-h-15 items-center gap-2 py-2">
         <div className="min-w-0 flex-1">
           <h1 className="t-large-title text-ink">{t("title")}</h1>
@@ -169,10 +176,20 @@ export function TasksScreen() {
               toggleLabel={task.done ? t("markOpen") : t("markDone")}
               priorityLabel={t("priority")}
               onToggle={() => tasksStore.toggle(task.id)}
+              onOpen={() => setOpenId(task.id)}
             />
           ))}
         </section>
       ))}
+    </div>
+      {openTask && wide && (
+        <aside className="sticky top-8 rounded-(--radius-card) border border-border bg-surface p-5 shadow-(--shadow-card-soft)">
+          <TaskDetail key={openTask.id} task={openTask} showHeader onClose={() => setOpenId(null)} />
+        </aside>
+      )}
+      <Sheet open={!!openTask && !wide} onClose={() => setOpenId(null)} title={t("detail.title")}>
+        {openTask && !wide && <TaskDetail key={openTask.id} task={openTask} onClose={() => setOpenId(null)} />}
+      </Sheet>
     </div>
   );
 }

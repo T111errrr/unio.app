@@ -35,6 +35,24 @@ export const tasksStore = {
   toggle(id: string) {
     set({ tasks: state.tasks.map((t) => (t.id === id ? { ...t, done: !t.done } : t)) });
   },
+  update(id: string, patch: Partial<Task>) {
+    set({ tasks: state.tasks.map((t) => (t.id === id ? { ...t, ...patch } : t)) });
+  },
+  toggleSubtask(id: string, subtaskId: string) {
+    set({
+      tasks: state.tasks.map((t) =>
+        t.id === id ? { ...t, subtasks: t.subtasks.map((s) => (s.id === subtaskId ? { ...s, done: !s.done } : s)) } : t,
+      ),
+    });
+  },
+  addSubtask(id: string, title: string) {
+    const sub = { id: `s${Date.now()}`, title, done: false };
+    set({ tasks: state.tasks.map((t) => (t.id === id ? { ...t, subtasks: [...t.subtasks, sub] } : t)) });
+  },
+  /** Soft delete; Undo 5 detik menyusul di tugas 2.03. */
+  remove(id: string) {
+    set({ tasks: state.tasks.map((t) => (t.id === id ? { ...t, deletedAt: new Date().toISOString() } : t)) });
+  },
   retrySync() {
     set({ unsynced: false });
   },

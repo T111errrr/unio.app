@@ -225,6 +225,20 @@
     "markOpen": "Mark as not done",
     "priority": "High priority",
     "title": "Tasks",
-    "search": "Search"
+    "search": "Search",
+    "detail": {
+      "title": "Task details",
+      "titleLabel": "Title",
+      "notes": "Notes",
+      "due": "Due",
+      "repeat": "Repeat",
+      "list": "List",
+      "no": "No",
+      "none": "None",
+      "subtasks": "Subtasks",
+      "addSubtask": "Add subtask",
+      "addTag": "+ Tag",
+      "more": "More"
+    }
   }
 }
