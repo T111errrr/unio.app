@@ -20,9 +20,9 @@ type Props = {
 /** Kerangka satu layar Intro: bilah atas, ilustrasi, judul + aksen serif, tombol. Lebar dibatasi 430 px (tampilan iPhone). */
 export function IntroScreen({ topBar, hero, title, accent, body, chips, centered, primaryLabel, onPrimary, secondary }: Props) {
   return (
-    <div className="mx-auto flex min-h-dvh w-full max-w-107.5 flex-col bg-background text-ink">
+    <div className="mx-auto flex min-h-dvh w-full max-w-107.5 flex-col justify-center bg-background text-ink">
       <TopBar {...topBar} />
-      <div aria-hidden="true" className="relative mx-auto min-h-90 w-full max-w-97.5 flex-1 overflow-visible">
+      <div aria-hidden="true" className="relative mx-auto min-h-90 max-h-110 w-full max-w-97.5 flex-1 overflow-visible">
         {hero}
       </div>
       <div className={`flex flex-col gap-2.5 px-6 pt-2 ${centered ? "items-center text-center" : ""}`}>
