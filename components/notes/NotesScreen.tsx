@@ -106,7 +106,7 @@ export function NotesScreen() {
           )}
         </div>
       ) : (
-        <div className="-mx-4 flex gap-2 overflow-x-auto px-4 py-1" role="group" aria-label={t("folder")}>
+        <div className="-mx-4 flex gap-2 overflow-x-auto overflow-y-hidden px-4 py-1 [scrollbar-width:none] [&::-webkit-scrollbar]:hidden" role="group" aria-label={t("folder")}>
           {["all", ...folders].map((f) => (
             <button
               key={f}
