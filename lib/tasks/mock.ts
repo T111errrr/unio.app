@@ -19,6 +19,8 @@ export function createMockTasks(): Task[] {
     { id: "t7", title: "💳 Bayar paylater", list: "pribadi", due: at(4, 0), allDay: true, priority: false, done: false, repeat: null, notes: "", tags: [], subtasks: [], deletedAt: null },
     { id: "t8", title: "💡 Ide fitur recap mingguan", list: "ide", due: null, allDay: false, priority: false, done: false, repeat: null, notes: "", tags: [], subtasks: [], deletedAt: null },
     { id: "t11", title: "🛒 Cari kado ulang tahun", list: "pribadi", due: null, allDay: false, priority: false, done: false, repeat: null, notes: "", tags: [], subtasks: [], deletedAt: null },
+    { id: "t12", title: "📞 Hubungi vendor percetakan", list: "kantor", due: null, allDay: false, priority: false, done: false, repeat: null, notes: "", tags: [], subtasks: [], deletedAt: at(-1, 10) },
+    { id: "t13", title: "🧹 Bersihkan folder unduhan", list: "pribadi", due: null, allDay: false, priority: false, done: false, repeat: null, notes: "", tags: [], subtasks: [], deletedAt: at(-3, 10) },
     { id: "t9", title: "📝 Susun notulen kickoff", list: "kantor", due: at(-2, 11), allDay: false, priority: false, done: true, repeat: null, notes: "", tags: [], subtasks: [], deletedAt: null },
     { id: "t10", title: "🧾 Catat pengeluaran minggu lalu", list: "pribadi", due: at(-3, 20), allDay: false, priority: false, done: true, repeat: null, notes: "", tags: [], subtasks: [], deletedAt: null },
   ];

@@ -134,14 +134,95 @@
     "other": "Tampilan lain"
   },
   "settings": {
+    "title": "Pengaturan",
     "general": "Umum",
-    "notifications": "Notifikasi",
-    "shortcuts": "Shortcuts & Siri",
+    "financeTasks": "Keuangan & Tugas",
     "data": "Data",
-    "account": "Akun",
+    "views": {
+      "appearance": "Tampilan",
+      "notifications": "Notifikasi",
+      "shortcuts": "Shortcuts & Siri",
+      "deleted": "Recently Deleted",
+      "deleteAccount": "Hapus akun"
+    },
+    "themeSystem": "Sistem",
+    "themeLight": "Terang",
+    "themeDark": "Gelap",
+    "themeSystemFull": "Ikuti sistem",
+    "themeNote": "Mode gelap mengikuti pengaturan iPhone atau Windows bila \"Ikuti sistem\" dipilih.",
     "language": "Bahasa",
+    "reduceMotion": "Kurangi gerakan",
+    "dailyReview": "Daily Review",
+    "pockets": "Kantong",
+    "categories": "Kategori & kata kunci",
+    "taskLists": "List tugas",
+    "exportCsv": "Ekspor CSV",
     "signOut": "Keluar",
-    "deleteAccount": "Hapus akun"
+    "signOutTitle": "Keluar dari Unio?",
+    "signOutBody": "Kamu bisa masuk lagi kapan saja.",
+    "copied": "Disalin",
+    "copyFailed": "Gagal menyalin",
+    "notif": {
+      "tasks": "Tugas",
+      "finance": "Keuangan",
+      "dueReminder": "Pengingat tenggat",
+      "budget": "Budget 80% & 100%",
+      "paylater": "Jatuh tempo Paylater",
+      "incoming": "Uang masuk",
+      "outgoing": "Uang keluar",
+      "deniedTitle": "Notifikasi diblokir",
+      "deniedBody": "Izinkan notifikasi untuk Unio di pengaturan browser atau iPhone, lalu kembali ke sini.",
+      "note": "Notifikasi hanya muncul bila Unio sudah dipasang di layar utama."
+    },
+    "sc": {
+      "intro": "Catat tanpa membuka Unio — lewat Siri atau ketuk punggung iPhone.",
+      "step1": "1. Kunci API",
+      "copy": "Salin",
+      "created": "Dibuat {date}",
+      "revoke": "Cabut & buat ulang",
+      "step2": "2. Pasang Shortcut",
+      "add": "Tambah",
+      "installed": "Terpasang",
+      "connected": "Terhubung",
+      "names": {
+        "expense": "Pengeluaran",
+        "income": "Pemasukan",
+        "task": "Tugas",
+        "capture": "Catat cepat",
+        "note": "Catatan",
+        "summary": "Ringkasan"
+      },
+      "backTap": {
+        "expense": "Ketuk 2× punggung",
+        "task": "Ketuk 3× punggung"
+      },
+      "step3": "3. Tes koneksi",
+      "sendTest": "Kirim tes",
+      "testing": "Menguji…",
+      "testOk": "Terhubung · {time}",
+      "testFail": "Koneksi gagal",
+      "fail1": "Periksa koneksi internet",
+      "fail2": "Pastikan kunci API di Shortcut sama"
+    },
+    "del": {
+      "emptyTitle": "Tidak ada item terhapus",
+      "emptyBody": "Tugas dan catatan yang kamu hapus muncul di sini selama 30 hari.",
+      "task": "Tugas",
+      "daysLeft": "{count} hari lagi",
+      "restore": "Pulihkan",
+      "restored": "Dipulihkan",
+      "keyword": "HAPUS",
+      "noteKind": "Catatan",
+      "noteHint": "Item dihapus permanen setelah 30 hari."
+    },
+    "account": {
+      "section": "Akun",
+      "delete": "Hapus akun",
+      "title": "Hapus akun?",
+      "body": "Semua tugas, transaksi, dan catatanmu dihapus permanen dan tidak bisa dipulihkan. Ekspor datamu dulu bila perlu.",
+      "type": "Ketik {word} untuk melanjutkan",
+      "pending": "Penghapusan akun aktif setelah terhubung ke server"
+    }
   },
   "language": {
     "label": "Bahasa",

@@ -134,14 +134,95 @@
     "other": "More appearance"
   },
   "settings": {
+    "title": "Settings",
     "general": "General",
-    "notifications": "Notifications",
-    "shortcuts": "Shortcuts & Siri",
+    "financeTasks": "Finance & Tasks",
     "data": "Data",
-    "account": "Account",
+    "views": {
+      "appearance": "Appearance",
+      "notifications": "Notifications",
+      "shortcuts": "Shortcuts & Siri",
+      "deleted": "Recently Deleted",
+      "deleteAccount": "Delete account"
+    },
+    "themeSystem": "System",
+    "themeLight": "Light",
+    "themeDark": "Dark",
+    "themeSystemFull": "Follow system",
+    "themeNote": "Dark mode follows your iPhone or Windows setting when \"Follow system\" is selected.",
     "language": "Language",
+    "reduceMotion": "Reduce motion",
+    "dailyReview": "Daily Review",
+    "pockets": "Pockets",
+    "categories": "Categories & keywords",
+    "taskLists": "Task lists",
+    "exportCsv": "Export CSV",
     "signOut": "Sign out",
-    "deleteAccount": "Delete account"
+    "signOutTitle": "Sign out of Unio?",
+    "signOutBody": "You can sign back in anytime.",
+    "copied": "Copied",
+    "copyFailed": "Couldn't copy",
+    "notif": {
+      "tasks": "Tasks",
+      "finance": "Finance",
+      "dueReminder": "Due reminders",
+      "budget": "Budget 80% & 100%",
+      "paylater": "Paylater due date",
+      "incoming": "Money in",
+      "outgoing": "Money out",
+      "deniedTitle": "Notifications blocked",
+      "deniedBody": "Allow notifications for Unio in your browser or iPhone settings, then come back.",
+      "note": "Notifications only appear once Unio is added to your home screen."
+    },
+    "sc": {
+      "intro": "Log without opening Unio — via Siri or iPhone Back Tap.",
+      "step1": "1. API key",
+      "copy": "Copy",
+      "created": "Created {date}",
+      "revoke": "Revoke & regenerate",
+      "step2": "2. Install Shortcuts",
+      "add": "Add",
+      "installed": "Installed",
+      "connected": "Connected",
+      "names": {
+        "expense": "Expense",
+        "income": "Income",
+        "task": "Task",
+        "capture": "Quick capture",
+        "note": "Note",
+        "summary": "Summary"
+      },
+      "backTap": {
+        "expense": "Double-tap back",
+        "task": "Triple-tap back"
+      },
+      "step3": "3. Test connection",
+      "sendTest": "Send test",
+      "testing": "Testing…",
+      "testOk": "Connected · {time}",
+      "testFail": "Connection failed",
+      "fail1": "Check your internet connection",
+      "fail2": "Make sure the API key in the Shortcut matches"
+    },
+    "del": {
+      "noteHint": "Items are permanently deleted after 30 days.",
+      "emptyTitle": "Nothing deleted",
+      "emptyBody": "Tasks and notes you delete appear here for 30 days.",
+      "task": "Task",
+      "noteKind": "Note",
+      "daysLeft": "{count} days left",
+      "restore": "Restore",
+      "restored": "Restored",
+      "keyword": "DELETE"
+    },
+    "account": {
+      "section": "Account",
+      "delete": "Delete account",
+      "title": "Delete account?",
+      "body": "All your tasks, transactions and notes are permanently deleted and can't be recovered. Export your data first if you need it.",
+      "type": "Type {word} to continue",
+      "pending": "Account deletion turns on once connected to the server"
+    }
   },
   "language": {
     "label": "Language",
