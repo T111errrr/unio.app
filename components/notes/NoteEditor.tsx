@@ -5,7 +5,6 @@ import { useLocale, useTranslations } from "next-intl";
 import { Badge } from "@/components/ui/Badge";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { IconButton } from "@/components/ui/IconButton";
-import { cx } from "@/lib/cx";
 import { notesStore, type Note } from "@/lib/notes/store";
 
 type Props = {
