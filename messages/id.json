@@ -50,7 +50,29 @@
     "pocket": "Kantong",
     "category": "Kategori",
     "time": "Waktu",
-    "now": "Sekarang"
+    "now": "Sekarang",
+    "placeholder": "Ketik atau ucapkan, misalnya \"kopi 25rb\"",
+    "pocketCash": "Cash",
+    "today": "Hari ini",
+    "pickCategory": "Pilih kategori dulu",
+    "saveTask": "Simpan tugas",
+    "saveNote": "Simpan catatan",
+    "taskTitle": "Judul tugas",
+    "noteBody": "Isi catatan",
+    "tomorrow10": "Besok 10:00",
+    "pickDate": "Pilih tanggal",
+    "tagPersonal": "Pribadi",
+    "saved": "Tersimpan",
+    "cat": {
+      "food": "Makan",
+      "coffee": "Kopi",
+      "transport": "Transport",
+      "shopping": "Belanja",
+      "salary": "Gaji",
+      "freelance": "Freelance",
+      "bonus": "Bonus",
+      "other": "Lainnya"
+    }
   },
   "auth": {
     "signIn": "Masuk",

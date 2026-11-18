@@ -53,6 +53,16 @@ export const tasksStore = {
   remove(id: string) {
     set({ tasks: state.tasks.map((t) => (t.id === id ? { ...t, deletedAt: new Date().toISOString() } : t)) });
   },
+  add(input: Pick<Task, "title" | "list" | "due" | "allDay" | "priority">): string {
+    const id = `t${Date.now()}${Math.floor(Math.random() * 1000)}`;
+    const task: Task = { ...input, id, done: false, repeat: null, notes: "", tags: [], subtasks: [], deletedAt: null };
+    set({ tasks: [task, ...state.tasks] });
+    return id;
+  },
+  /** Hapus permanen (hanya untuk Undo tugas yang baru ditambah). */
+  discard(id: string) {
+    set({ tasks: state.tasks.filter((t) => t.id !== id) });
+  },
   restore(id: string) {
     set({ tasks: state.tasks.map((t) => (t.id === id ? { ...t, deletedAt: null } : t)) });
   },

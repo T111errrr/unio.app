@@ -14,9 +14,15 @@ export function TabBar({ onCapture }: Props) {
   const pathname = usePathname();
 
   return (
-    <nav
+    <>
+      {/* Figma: Bottom Fade — latar memudar di bawah tab bar supaya isi tidak menabrak. */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-x-0 bottom-0 z-20 h-32.5 bg-[linear-gradient(to_bottom,var(--unio-fade-clear),var(--unio-background)_60%)] md:hidden"
+      />
+      <nav
       aria-label={t("main")}
-      className="pointer-events-none fixed inset-x-0 bottom-0 z-30 flex justify-center gap-2 px-4 pb-[max(1rem,env(safe-area-inset-bottom))] md:hidden"
+      className="pointer-events-none fixed inset-x-0 bottom-0 z-30 flex justify-center gap-2 px-4 pb-[max(1.5rem,calc(env(safe-area-inset-bottom)+0.5rem))] md:hidden"
     >
       <ul className="pointer-events-auto flex items-center rounded-(--radius-xl) border border-border bg-surface p-1 shadow-(--shadow-surface-floating)">
         {TAB_ITEMS.map((item) => {
@@ -50,5 +56,6 @@ export function TabBar({ onCapture }: Props) {
         <Icon name="add" size="large" />
       </button>
     </nav>
+    </>
   );
 }

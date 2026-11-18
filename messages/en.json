@@ -50,7 +50,29 @@
     "pocket": "Pocket",
     "category": "Category",
     "time": "Time",
-    "now": "Now"
+    "now": "Now",
+    "placeholder": "Type or say, e.g. \"coffee 25k\"",
+    "pocketCash": "Cash",
+    "today": "Today",
+    "pickCategory": "Pick a category first",
+    "saveTask": "Save task",
+    "saveNote": "Save note",
+    "taskTitle": "Task title",
+    "noteBody": "Note",
+    "tomorrow10": "Tomorrow 10:00",
+    "pickDate": "Pick date",
+    "tagPersonal": "Personal",
+    "saved": "Saved",
+    "cat": {
+      "food": "Food",
+      "coffee": "Coffee",
+      "transport": "Transport",
+      "shopping": "Shopping",
+      "salary": "Salary",
+      "freelance": "Freelance",
+      "bonus": "Bonus",
+      "other": "Other"
+    }
   },
   "auth": {
     "signIn": "Sign in",
