@@ -11,7 +11,7 @@ Status awal 16 Nov 2026: **siap** = bahannya sudah ada di repo ini dan tinggal d
 | ID | Tugas | Selesai bila | Catatan |
 | --- | --- | --- | --- |
 | 1.01 | Akun GitHub, Vercel, Supabase + repo privat `unio` | Repo terhubung ke Vercel, link preview muncul | Dikerjakan Jeff, lihat `00-mulai-di-sini.md` |
-| 1.02 | Next.js + TypeScript + Tailwind + manifest PWA | App kosong bisa dipasang di Home Screen iPhone | `create-next-app` terbaru, App Router, tanpa folder `src/` |
+| 1.02 | Next.js + TypeScript + Tailwind + manifest PWA | App kosong bisa dipasang di Home Screen iPhone | **kerangka ditulis manual (belum diverifikasi build — sandbox tanpa npm).** Next 15, Tailwind 4, manifest + ikon PWA. Verifikasi: `npm install && npm run build` atau preview Vercel |
 | 1.03 | CLAUDE.md (aturan proyek) | Claude Code mengikuti aturan tanpa diulang | **siap** — `CLAUDE.md` |
 | 1.04 | Token Figma → tokens.css + Tailwind | Warna light/dark, spacing, radius sama dengan Figma | **siap** — `styles/tokens.css`; tinggal dihubungkan ke tema Tailwind |
 | 1.05 | Set ikon pengganti SF Symbols + peta simbol | Semua ikon di desain punya padanan | **siap** — `icon-map.md`; verifikasi nama Lucide, buat `Icon.tsx` |
