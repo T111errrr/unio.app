@@ -9,6 +9,7 @@ import { Icon, type IconName } from "@/components/ui/Icon";
 import { IconButton } from "@/components/ui/IconButton";
 import { SegmentedControl } from "@/components/ui/SegmentedControl";
 import { Skeleton } from "@/components/ui/Skeleton";
+import { Toast } from "@/components/ui/Toast";
 import { TaskRow } from "@/components/tasks/TaskRow";
 import { Link } from "@/i18n/navigation";
 import { cx } from "@/lib/cx";
@@ -38,6 +39,30 @@ function CardHeader({ title, action }: { title: string; action?: ReactNode }) {
     <div className="flex min-h-11 items-center justify-between">
       <h2 className="t-headline">{title}</h2>
       {action}
+    </div>
+  );
+}
+
+function Ring({ ratio, label }: { ratio: number; label: string }) {
+  const r = 14;
+  const c = 2 * Math.PI * r;
+  const v = Math.min(Math.max(ratio, 0), 1);
+  return (
+    <svg viewBox="0 0 36 36" className="size-9 shrink-0 -rotate-90" role="img" aria-label={label}>
+      <circle cx="18" cy="18" r={r} fill="none" strokeWidth="4" className="stroke-field" />
+      <circle cx="18" cy="18" r={r} fill="none" strokeWidth="4" strokeLinecap="round" strokeDasharray={`${c * v} ${c}`} className={ratio > 1 ? "stroke-expense" : "stroke-accent"} />
+    </svg>
+  );
+}
+
+function MiniBars({ done, total }: { done: number; total: number }) {
+  const n = Math.min(Math.max(total, 1), 7);
+  const filled = total === 0 ? 0 : Math.round((done / total) * n);
+  return (
+    <div aria-hidden className="flex h-4 items-end gap-1">
+      {Array.from({ length: n }, (_, i) => (
+        <span key={i} className={cx("w-1.5 rounded-(--radius-full)", i < filled ? "h-4 bg-accent" : "h-2 bg-field")} />
+      ))}
     </div>
   );
 }
@@ -96,6 +121,7 @@ export function TodayScreen() {
     () => (now && !empty ? tasks.filter((x) => !x.deletedAt && x.due && (dayDiff(x.due, now) === 0 || isOverdue(x, now))) : []),
     [tasks, now, empty],
   );
+  const inboxCount = tasks.filter((x) => !x.deletedAt && !x.done && !x.due).length;
   const doneCount = todayTasks.filter((x) => x.done).length;
   const todayTx = useMemo(
     () => (now && !empty ? transactions.filter((x) => dayDiff(x.at, now) === 0) : []),
@@ -178,16 +204,6 @@ export function TodayScreen() {
         </div>
       ) : (
         <>
-          {unsynced && (
-            <div role="status" className="flex items-center gap-3 rounded-(--radius-card-inner) border border-border bg-surface px-4 py-3">
-              <Icon name="not-synced" />
-              <p className="t-subheadline-em flex-1">{tt("unsynced")}</p>
-              <Button variant="secondary" fullWidth={false} className="h-11 shrink-0 px-4" onClick={() => tasksStore.retrySync()}>
-                {tcap("retry")}
-              </Button>
-            </div>
-          )}
-
           <section className={CARD}>
             <CardHeader title={t("summary")} />
             <div className="grid grid-cols-2 gap-3 pt-1 pb-1">
@@ -196,7 +212,10 @@ export function TodayScreen() {
                   <Icon name="nav-finance" size="small" />
                   {t("expenseShort")}
                 </span>
-                <span className="t-title-3 mt-1">Rp{short(spent)}</span>
+                <div className="mt-1 flex items-center justify-between gap-2">
+                  <span className="t-title-3">Rp{short(spent)}</span>
+                  <Ring ratio={spent / DAILY_BUDGET} label={t("budgetUsed", { percent: Math.round((spent / DAILY_BUDGET) * 100) })} />
+                </div>
                 <span className="t-caption-1 text-ink-secondary">{t("ofBudget", { amount: short(DAILY_BUDGET) })}</span>
               </div>
               <div className="flex flex-col gap-1 rounded-(--radius-card-inner) bg-surface-inset p-3">
@@ -204,19 +223,22 @@ export function TodayScreen() {
                   <Icon name="nav-tasks" size="small" />
                   {t("tasksShort")}
                 </span>
-                <span className="t-title-3 mt-1">{`${doneCount}/${todayTasks.length}`}</span>
+                <div className="mt-1 flex items-center justify-between gap-2">
+                  <span className="t-title-3">{`${doneCount}/${todayTasks.length}`}</span>
+                  <MiniBars done={doneCount} total={todayTasks.length} />
+                </div>
                 <span className="t-caption-1 text-ink-secondary">{todayTasks.length === 0 ? t("noTasksYet") : t("doneLabel")}</span>
               </div>
             </div>
           </section>
 
-          {!empty && (
+          {!empty && inboxCount > 0 && (
             <Link href="/inbox" className={cx(CARD, "flex min-h-14 items-center gap-3")}>
               <span className="flex size-9 items-center justify-center rounded-(--radius-m) bg-field">
                 <Icon name="nav-inbox" size="small" />
               </span>
               <span className="t-body flex-1">{t("inbox")}</span>
-              <span className="t-subheadline text-ink-secondary">{t("inboxCount", { count: 2 })}</span>
+              <span className="t-subheadline text-ink-secondary">{t("inboxCount", { count: inboxCount })}</span>
               <span className="text-ink-tertiary">
                 <Icon name="chevron-right" size="small" />
               </span>
@@ -336,6 +358,17 @@ export function TodayScreen() {
             </section>
           )}
         </>
+      )}
+
+      {unsynced && !error && !loading && (
+        <div className="pointer-events-none fixed inset-x-0 bottom-[calc(env(safe-area-inset-bottom)+6.5rem)] z-30 flex justify-center md:bottom-8">
+          <Toast type="notSynced" message={tt("unsynced")} actionLabel={tcap("retry")} onAction={() => tasksStore.retrySync()} className="pointer-events-auto" />
+        </div>
+      )}
+      {error && (
+        <div className="pointer-events-none fixed inset-x-0 bottom-[calc(env(safe-area-inset-bottom)+6.5rem)] z-30 flex justify-center md:bottom-8">
+          <Toast type="error" message={t("toastFailed")} actionLabel={tcap("retry")} onAction={() => tasksStore.load(scenario)} className="pointer-events-auto" />
+        </div>
       )}
     </div>
   );
