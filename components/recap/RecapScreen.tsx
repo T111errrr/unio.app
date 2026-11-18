@@ -144,7 +144,7 @@ export function RecapScreen() {
           <p className="t-subheadline text-ink-secondary">{t("errorBody")}</p>
           <Button icon="retry" onClick={() => { financeStore.load(scenario); tasksStore.load(scenario); }}>{tcap("retry")}</Button>
         </section>
-      ) : loading ? (
+      ) : loading || !data ? (
         <div aria-busy="true" className="flex flex-col gap-4">
           <Skeleton className="h-44 rounded-(--radius-card)" />
           <Skeleton className="h-64 rounded-(--radius-card)" />
