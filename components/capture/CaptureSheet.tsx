@@ -262,7 +262,7 @@ function CaptureForm({ initialTab, onClose, onSaved }: { initialTab: Tab; onClos
             </span>
           </div>
           <div>
-            <ListRow leadingIcon="list" title={tt("detail.list")} trailing="valueChevron" value={tt(`lists.${list}`)} onClick={() => setList(TASK_LISTS[(TASK_LISTS.indexOf(list) + 1) % TASK_LISTS.length])} />
+            <ListRow leadingIcon="list" title={tt("detail.list")} trailing="valueChevron" value={tt(`lists.${list}`)} onClick={() => setList(TASK_LISTS[(TASK_LISTS.indexOf(list) + 1) % TASK_LISTS.length] ?? "kantor")} />
             <ListRow leadingIcon="priority" title={tt("priority")} trailing="toggle" checked={priority} onCheckedChange={setPriority} showDivider={false} />
           </div>
         </>
