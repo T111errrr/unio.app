@@ -185,5 +185,46 @@
     "sampleNotif3Meta": "UNIO · sekarang",
     "sampleNotif3Title": "Uang keluar −Rp35.000",
     "sampleNotif3Body": "Makan siang · sisa Rp420.000"
+  },
+  "tasks": {
+    "lists": {
+      "all": "Semua",
+      "kantor": "Kantor",
+      "pribadi": "Pribadi",
+      "ide": "Ide",
+      "add": "+ List",
+      "label": "Pilih list"
+    },
+    "views": {
+      "label": "Tampilan tugas",
+      "today": "Hari ini",
+      "upcoming": "Mendatang",
+      "done": "Selesai"
+    },
+    "groups": {
+      "today": "Hari ini",
+      "tomorrow": "Besok",
+      "week": "Minggu ini",
+      "later": "Nanti",
+      "none": "Tanpa tanggal"
+    },
+    "yesterday": "Kemarin",
+    "weekly": "Setiap minggu",
+    "newTask": "Tugas baru",
+    "addTask": "Tambah tugas",
+    "summary": "{count} tugas mendatang · {overdue} terlambat",
+    "emptyTitle": "Belum ada tugas di {list}",
+    "emptyTitleAll": "Belum ada tugas",
+    "emptyDone": "Belum ada tugas selesai",
+    "emptyBody": "Tambah lewat tombol + atau ucapkan \"Hey Siri, Unio task\".",
+    "errorTitle": "Tugas gagal dimuat",
+    "errorBody": "Periksa koneksi, lalu coba lagi.",
+    "unsynced": "Belum tersinkron",
+    "unsyncedBody": "Perubahan tersimpan di perangkat ini.",
+    "markDone": "Tandai selesai",
+    "markOpen": "Tandai belum selesai",
+    "priority": "Prioritas tinggi",
+    "title": "Tugas",
+    "search": "Cari"
   }
 }
