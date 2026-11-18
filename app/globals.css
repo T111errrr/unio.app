@@ -177,3 +177,15 @@ body {
     scale: 0.96;
   }
 }
+
+@layer components {
+  /* Aksen serif italic pada judul onboarding (Figma: Instrument Serif Italic 40/32). */
+  .t-accent-serif {
+    font-family: var(--font-serif);
+    font-style: italic;
+    font-weight: 400;
+    font-size: 40px;
+    line-height: 32px;
+    letter-spacing: 0;
+  }
+}
