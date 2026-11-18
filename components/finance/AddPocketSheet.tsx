@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
 import { Sheet } from "@/components/ui/Sheet";
+import { SelectField, TextField } from "@/components/ui/TextField";
 import { cx } from "@/lib/cx";
 import { digitsToNumber, POCKET_ICON, POCKET_KINDS } from "@/lib/finance/calc";
 import { financeStore, type PocketKind } from "@/lib/finance/store";
@@ -34,43 +35,62 @@ export function AddPocketSheet({ open, onClose, onAdded }: { open: boolean; onCl
   return (
     <Sheet open={open} onClose={onClose} title={t("addPocket")}>
       <div className="flex flex-col gap-4">
-        <div className="flex justify-between gap-1" role="group" aria-label={t("pocketType")}>
-          {POCKET_KINDS.map((k) => (
-            <button
-              key={k}
-              type="button"
-              aria-pressed={kind === k}
-              onClick={() => setKind(k)}
-              className="flex min-h-11 w-14 flex-col items-center gap-1"
-            >
-              <span className={cx("flex size-12 items-center justify-center rounded-(--radius-card-inner)", kind === k ? "bg-accent text-on-accent" : "bg-field")}>
-                <Icon name={POCKET_ICON[k]} />
-              </span>
-              <span className={cx("t-caption-1", kind === k ? "t-footnote-em" : "text-ink-secondary")}>{t(`kind.${k}`)}</span>
-            </button>
-          ))}
-        </div>
-        <label className="flex flex-col gap-2">
-          <span className="t-subheadline text-ink-secondary">{paylater ? t("name") : t("pocketName")}</span>
-          <input value={name} onChange={(e) => setName(e.target.value)} className="t-body h-14 rounded-(--radius-control) border-[1.5px] border-transparent bg-field px-5 outline-none focus:border-accent focus:bg-surface" />
-        </label>
         {paylater ? (
           <>
+        <div className="flex items-start justify-between" role="group" aria-label={t("pocketType")}>
+              {POCKET_KINDS.map((k) => (
+                <button
+                  key={k}
+                  type="button"
+                  aria-pressed={kind === k}
+                  onClick={() => setKind(k)}
+                  className="flex min-h-11 w-15 flex-col items-center gap-1.5"
+                >
+                  <span className={cx("flex size-14 items-center justify-center rounded-(--radius-control)", kind === k ? "bg-accent text-on-accent shadow-(--shadow-button-bevel)" : "bg-field text-ink")}>
+                    <Icon name={POCKET_ICON[k]} />
+                  </span>
+                  <span className={cx("t-caption-1", kind === k ? "text-ink" : "text-ink-secondary")}>{t(`kind.${k}`)}</span>
+                </button>
+              ))}
+            </div>
+            <TextField label={t("name")} value={name} onChange={(e) => setName(e.target.value)} />
             <AmountField label={t("limit")} value={limit} onChange={setLimit} />
             <AmountField label={t("debtNow")} value={balance} onChange={setBalance} />
-            <label className="flex flex-col gap-2">
-              <span className="t-subheadline text-ink-secondary">{t("dueDate")}</span>
-              <select value={dueDay} onChange={(e) => setDueDay(Number(e.target.value))} className="t-body h-14 rounded-(--radius-control) bg-field px-5 outline-none">
-                {Array.from({ length: 28 }, (_, i) => i + 1).map((d) => (
-                  <option key={d} value={d}>{t("everyDate", { day: d })}</option>
-                ))}
-              </select>
-            </label>
+            <SelectField label={t("dueDate")} value={dueDay} onChange={(e) => setDueDay(Number(e.target.value))}>
+              {Array.from({ length: 28 }, (_, i) => i + 1).map((d) => (
+                <option key={d} value={d}>{t("everyDate", { day: d })}</option>
+              ))}
+            </SelectField>
           </>
         ) : (
-          <AmountField label={t("balanceNow")} value={balance} onChange={setBalance} />
+          <>
+            {/* Figma: grup abu-abu berisi kartu putih (jenis, nama, saldo). */}
+            <div className="flex flex-col gap-2.5 rounded-(--radius-card) bg-field px-1.5 pt-3.5 pb-1.5">
+              <p className="t-callout px-2 text-ink-secondary">{t("pocketDetail")}</p>
+              <div className="flex flex-col gap-4 rounded-(--radius-card-inner) bg-surface px-4 pt-5 pb-4">
+        <div className="flex items-start justify-between" role="group" aria-label={t("pocketType")}>
+                  {POCKET_KINDS.map((k) => (
+                    <button
+                      key={k}
+                      type="button"
+                      aria-pressed={kind === k}
+                      onClick={() => setKind(k)}
+                      className="flex min-h-11 w-15 flex-col items-center gap-1.5"
+                    >
+                      <span className={cx("flex size-14 items-center justify-center rounded-(--radius-control)", kind === k ? "bg-accent text-on-accent shadow-(--shadow-button-bevel)" : "bg-field text-ink")}>
+                        <Icon name={POCKET_ICON[k]} />
+                      </span>
+                      <span className={cx("t-caption-1", kind === k ? "text-ink" : "text-ink-secondary")}>{t(`kind.${k}`)}</span>
+                    </button>
+                  ))}
+                </div>
+                <TextField label={t("pocketName")} value={name} onChange={(e) => setName(e.target.value)} />
+                <AmountField label={t("balanceNow")} value={balance} onChange={setBalance} />
+              </div>
+            </div>
+            <p className="t-footnote text-ink-secondary">{t("paylaterHint")}</p>
+          </>
         )}
-        <p className="t-footnote text-ink-secondary">{t("paylaterHint")}</p>
         <Button
           disabled={!ok}
           onClick={() => {

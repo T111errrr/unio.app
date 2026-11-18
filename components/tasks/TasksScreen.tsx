@@ -104,7 +104,9 @@ export function TasksScreen() {
           )}
         </div>
         <IconButton icon="search" label={t("search")} className="size-11 md:hidden" />
-        <Button icon="add" fullWidth={false} className="hidden shrink-0 md:inline-flex">{t("newTask")}</Button>
+        <div className="hidden shrink-0 md:block">
+          <Button icon="add" fullWidth={false}>{t("newTask")}</Button>
+        </div>
       </header>
 
       {unsynced && (

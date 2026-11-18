@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/Button";
 import { cx } from "@/lib/cx";
 import { categorySpent, compact, digitsToNumber, monthSpent, rupiah } from "@/lib/finance/calc";
 import { financeStore, type BudgetCategory, type Transaction } from "@/lib/finance/store";
+import { TextField } from "@/components/ui/TextField";
 import { AmountField } from "./AmountField";
 import { FullScreen } from "./FullScreen";
 
@@ -114,10 +115,7 @@ export function BudgetScreen({ open, onClose, monthly, categories, txs, now }: P
       <Sheet open={editId !== null} onClose={() => setEditId(null)} title={editId === "monthly" ? t("monthlyBudget") : editId === "new" ? t("addCategory") : t("editLimit")}>
         <div className="flex flex-col gap-4">
           {editId === "new" && (
-            <label className="flex flex-col gap-2">
-              <span className="t-subheadline text-ink-secondary">{t("name")}</span>
-              <input value={name} onChange={(e) => setName(e.target.value)} className="t-body h-14 rounded-(--radius-control) border-[1.5px] border-transparent bg-field px-5 outline-none focus:border-accent focus:bg-surface" />
-            </label>
+            <TextField label={t("name")} value={name} onChange={(e) => setName(e.target.value)} />
           )}
           <AmountField label={t("limit")} value={val} onChange={setVal} />
           <Button disabled={!digitsToNumber(val) || (editId === "new" && !name.trim())} onClick={save}>{t("save")}</Button>

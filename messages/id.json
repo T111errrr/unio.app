@@ -414,6 +414,7 @@
     "undo": "Urungkan",
     "editor": "Editor catatan",
     "more": "Opsi lainnya",
+    "moveTo": "Pindah ke folder",
     "delete": "Hapus catatan",
     "untitled": "Tanpa judul",
     "titlePlaceholder": "Judul",
@@ -534,7 +535,9 @@
     "to": "Ke",
     "transfer": "Transfer",
     "samePocket": "Kantong asal dan tujuan harus berbeda.",
+    "toCaption": "ke {name}",
     "transferNote": "Transfer tidak dihitung sebagai pengeluaran atau pemasukan bulanan.",
+    "pocketDetail": "Detail kantong",
     "pocketType": "Jenis kantong",
     "kind": {
       "cash": "Cash",

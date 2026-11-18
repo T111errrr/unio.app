@@ -1,7 +1,8 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { Badge } from "@/components/ui/Badge";
 import { Icon, type IconName } from "@/components/ui/Icon";
 import { IconButton } from "@/components/ui/IconButton";
 import { cx } from "@/lib/cx";
@@ -18,6 +19,7 @@ type Props = {
 export function NoteEditor({ note, folders, onClose, onDelete }: Props) {
   const t = useTranslations("notes");
   const tc = useTranslations("common");
+  const locale = useLocale();
   const ref = useRef<HTMLDialogElement>(null);
   const bodyRef = useRef<HTMLTextAreaElement>(null);
   const [title, setTitle] = useState("");
@@ -82,6 +84,25 @@ export function NoteEditor({ note, folders, onClose, onDelete }: Props) {
             <IconButton icon="more" label={t("more")} onClick={() => setMenu((v) => !v)} className="size-11" />
             {menu && (
               <div role="menu" className="absolute top-12 right-0 z-10 w-48 rounded-(--radius-card-inner) border border-border bg-surface p-1 shadow-(--shadow-surface-floating)">
+                <p className="t-footnote px-3 pt-2 pb-1 text-ink-secondary">{t("moveTo")}</p>
+                {folders.map((f) => (
+                  <button
+                    key={f}
+                    role="menuitemradio"
+                    aria-checked={tag === f}
+                    type="button"
+                    className="t-body flex min-h-11 w-full items-center gap-2 rounded-(--radius-m) px-3"
+                    onClick={() => {
+                      setTag(f);
+                      setMenu(false);
+                    }}
+                  >
+                    <Icon name="folder" size="small" />
+                    <span className="flex-1 text-left">{f}</span>
+                    {tag === f && <Icon name="check" size="small" />}
+                  </button>
+                ))}
+                <div aria-hidden className="mx-3 my-1 h-px bg-divider" />
                 <button
                   role="menuitem"
                   type="button"
@@ -107,22 +128,14 @@ export function NoteEditor({ note, folders, onClose, onDelete }: Props) {
             aria-label={t("titlePlaceholder")}
             className="t-title-1 w-full bg-transparent outline-none placeholder:text-ink-tertiary"
           />
-          <div className="flex flex-wrap gap-2" role="group" aria-label={t("folder")}>
-            {folders.map((f) => (
-              <button
-                key={f}
-                type="button"
-                aria-pressed={tag === f}
-                onClick={() => setTag(f)}
-                className={cx(
-                  "t-footnote-em relative inline-flex h-8 items-center gap-1.5 rounded-(--radius-m) px-3 before:absolute before:-inset-y-1.5 before:inset-x-0 before:content-['']",
-                  tag === f ? "bg-accent text-on-accent" : "bg-field text-ink-secondary",
-                )}
-              >
-                <Icon name="folder" size="small" />
-                {f}
-              </button>
-            ))}
+          {/* Figma: lencana statis (folder + tanggal). Pindah folder lewat menu "Opsi lainnya". */}
+          <div className="flex flex-wrap gap-2">
+            <Badge icon="folder">{tag}</Badge>
+            {note && (
+              <Badge type="info" icon="calendar">
+                {new Intl.DateTimeFormat(locale, { day: "numeric", month: "short" }).format(new Date(note.at))}
+              </Badge>
+            )}
           </div>
           <textarea
             ref={bodyRef}

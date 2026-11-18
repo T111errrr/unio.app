@@ -414,6 +414,7 @@
     "undo": "Undo",
     "editor": "Note editor",
     "more": "More options",
+    "moveTo": "Move to folder",
     "delete": "Delete note",
     "untitled": "Untitled",
     "titlePlaceholder": "Title",
@@ -534,7 +535,9 @@
     "to": "To",
     "transfer": "Transfer",
     "samePocket": "Source and destination must differ.",
+    "toCaption": "to {name}",
     "transferNote": "Transfers don't count as monthly spending or income.",
+    "pocketDetail": "Pocket details",
     "pocketType": "Pocket type",
     "kind": {
       "cash": "Cash",

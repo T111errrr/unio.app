@@ -7,6 +7,7 @@ import { Icon } from "@/components/ui/Icon";
 import { Sheet } from "@/components/ui/Sheet";
 import { rupiah } from "@/lib/finance/calc";
 import { financeStore, type Transaction } from "@/lib/finance/store";
+import { TextField } from "@/components/ui/TextField";
 import { AmountField } from "./AmountField";
 import { FullScreen } from "./FullScreen";
 
@@ -92,10 +93,7 @@ export function TransactionDetail({ tx, categoryLabel, unsynced, onClose, onDele
       </FullScreen>
       <Sheet open={editing} onClose={() => setEditing(false)} title={t("editTx")}>
         <div className="flex flex-col gap-4">
-          <label className="flex flex-col gap-2">
-            <span className="t-subheadline text-ink-secondary">{t("noteLabel")}</span>
-            <input value={note} onChange={(e) => setNote(e.target.value)} className="t-body h-14 rounded-(--radius-control) border-[1.5px] border-transparent bg-field px-5 outline-none focus:border-accent focus:bg-surface" />
-          </label>
+          <TextField label={t("noteLabel")} value={note} onChange={(e) => setNote(e.target.value)} />
           <AmountField label={t("amount")} value={amount} onChange={setAmount} />
           <Button
             disabled={!note.trim() || !Number(amount.replace(/\D/g, ""))}

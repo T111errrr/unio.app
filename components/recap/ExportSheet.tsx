@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/Button";
 import { Icon } from "@/components/ui/Icon";
+import { ListRow } from "@/components/ui/ListRow";
 import { Sheet } from "@/components/ui/Sheet";
 import { cx } from "@/lib/cx";
 import type { Transaction } from "@/lib/finance/store";
@@ -55,14 +56,6 @@ export function ExportSheet({ open, onClose, txs, tasks, now }: Props) {
     setDone(name);
   }
 
-  const check = (on: boolean, set: (v: boolean) => void, label: string) => (
-    <button type="button" role="checkbox" aria-checked={on} onClick={() => set(!on)} className="flex min-h-14 w-full items-center gap-3 py-2 text-left">
-      <span className="t-body flex-1">{label}</span>
-      <span className={cx("flex size-6 items-center justify-center rounded-(--radius-full)", on ? "bg-accent text-on-accent" : "border-[1.5px] border-ink-tertiary")}>
-        {on && <Icon name="check" size="small" />}
-      </span>
-    </button>
-  );
   const dateCls = "t-body h-14 w-full rounded-(--radius-control) bg-field px-4 outline-none";
 
   return (
@@ -76,14 +69,13 @@ export function ExportSheet({ open, onClose, txs, tasks, now }: Props) {
         </div>
       ) : (
         <div className="flex flex-col gap-4">
-          <div className="rounded-(--radius-card-inner) bg-surface-inset px-4">
-            {check(withTx, setWithTx, t("transactions"))}
-            <div aria-hidden className="h-px bg-divider" />
-            {check(withTasks, setWithTasks, t("tasks"))}
+          <div className="rounded-(--radius-card-inner) bg-surface-inset px-3 py-1">
+            <ListRow leadingSurface leadingIcon="nav-finance" title={t("transactions")} trailing="check" checked={withTx} onClick={() => setWithTx(!withTx)} />
+            <ListRow leadingSurface leadingIcon="nav-tasks" title={t("tasks")} trailing="check" checked={withTasks} onClick={() => setWithTasks(!withTasks)} showDivider={false} />
           </div>
           <div className="grid grid-cols-2 gap-3">
-            <label className="flex flex-col gap-2"><span className="t-subheadline text-ink-secondary">{t("from")}</span><input type="date" value={from} onChange={(e) => setFrom(e.target.value)} className={dateCls} /></label>
-            <label className="flex flex-col gap-2"><span className="t-subheadline text-ink-secondary">{t("to")}</span><input type="date" value={to} onChange={(e) => setTo(e.target.value)} className={dateCls} /></label>
+            <label className="flex flex-col gap-2"><span className="t-callout text-ink-secondary">{t("from")}</span><input type="date" value={from} onChange={(e) => setFrom(e.target.value)} className={dateCls} /></label>
+            <label className="flex flex-col gap-2"><span className="t-callout text-ink-secondary">{t("to")}</span><input type="date" value={to} onChange={(e) => setTo(e.target.value)} className={dateCls} /></label>
           </div>
           {from && to && from > to && <p role="alert" className="t-footnote text-destructive">{t("badRange")}</p>}
           <p className="t-footnote text-ink-secondary">{t("exportNote")}</p>

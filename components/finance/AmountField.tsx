@@ -11,8 +11,8 @@ export function AmountField({ label, value, onChange, placeholder = "0", classNa
   const id = useId();
   return (
     <div className={cx("flex flex-col gap-2", className)}>
-      <label htmlFor={id} className="t-subheadline text-ink-secondary">{label}</label>
-      <div className="flex h-14 items-center gap-2 rounded-(--radius-control) border-[1.5px] border-transparent bg-field px-5 focus-within:border-accent focus-within:bg-surface">
+      <label htmlFor={id} className="t-callout text-ink-secondary">{label}</label>
+      <div className="flex h-14 items-center gap-2.5 rounded-(--radius-control) border-[1.5px] border-transparent bg-field pr-5 pl-6 focus-within:border-accent focus-within:bg-surface">
         <span className="t-body text-ink-secondary">Rp</span>
         <input
           id={id}
