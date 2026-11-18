@@ -80,5 +80,10 @@
     "language": "Bahasa",
     "signOut": "Keluar",
     "deleteAccount": "Hapus akun"
+  },
+  "language": {
+    "label": "Bahasa",
+    "id": "ID",
+    "en": "EN"
   }
 }
