@@ -80,5 +80,10 @@
     "language": "Language",
     "signOut": "Sign out",
     "deleteAccount": "Delete account"
+  },
+  "language": {
+    "label": "Language",
+    "id": "ID",
+    "en": "EN"
   }
 }
