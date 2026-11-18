@@ -330,17 +330,17 @@ export function TodayScreen() {
               todayTx.map((x, i) => (
                 <div key={x.id} className="relative flex items-center gap-3 py-3">
                   <span className="flex size-11 shrink-0 items-center justify-center rounded-(--radius-card-inner) bg-field">
-                    <Icon name={x.kind === "income" ? "income" : "expense"} size="small" />
+                    <Icon name={x.kind === "income" ? "income" : x.kind === "transfer" ? "transfer" : "expense"} size="small" />
                   </span>
                   <div className="min-w-0 flex-1">
                     <p className="t-body truncate">{x.note}</p>
                     <p className="t-footnote truncate text-ink-secondary">
-                      {tcap(`cat.${x.category}`)} · {x.pocket}
+                      {x.kind === "transfer" ? `${x.pocket} → ${x.toPocket}` : `${tcap(`cat.${x.category}`)} · ${x.pocket}`}
                     </p>
                   </div>
                   <div className="text-right">
                     <p className={cx("t-body-em", x.kind === "income" && "text-income")}>
-                      {x.kind === "income" ? "+" : "−"}Rp{rupiah(x.amount)}
+                      {x.kind === "income" ? "+" : x.kind === "transfer" ? "" : "−"}Rp{rupiah(x.amount)}
                     </p>
                     <p className="t-footnote text-ink-secondary">{hhmm(x.at)}</p>
                   </div>
