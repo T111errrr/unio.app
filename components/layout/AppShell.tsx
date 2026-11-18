@@ -40,11 +40,14 @@ export function AppShell({ children }: { children: ReactNode }) {
       }
     };
     const onSearch = () => setSearchOpen(true);
+    const onCapture = () => setCaptureOpen(true);
     window.addEventListener("keydown", onKey);
     window.addEventListener("unio:search", onSearch);
+    window.addEventListener("unio:capture", onCapture);
     return () => {
       window.removeEventListener("keydown", onKey);
       window.removeEventListener("unio:search", onSearch);
+      window.removeEventListener("unio:capture", onCapture);
     };
   }, []);
 
