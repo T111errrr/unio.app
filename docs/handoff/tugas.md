@@ -33,7 +33,7 @@ Status awal 16 Nov 2026: **siap** = bahannya sudah ada di repo ini dan tinggal d
 | 2.01 | Tugas: list Kantor/Pribadi/Ide, Mendatang/Selesai | Tambah, ubah, selesai, hapus jalan; 5 state (selesai di kode: tampilan + 5 state, data contoh; tambah/hapus menyusul) |
 | 2.02 | Detail tugas (sheet / panel desktop), subtugas, prioritas, tenggat | Perubahan tersimpan otomatis (selesai di kode; "+ Tag" belum)
 | 2.03 | Swipe aksi + hapus dengan Undo | Hapus bisa dibatalkan dalam 5 detik (selesai di kode: geser, dialog hapus, Undo 5 detik)
-| 2.04 | Catat cepat: pengeluaran, pemasukan, tugas, catatan | Tersimpan dalam ≤ 3 tap; toast Tersimpan muncul |
+| 2.04 | Catat cepat: pengeluaran, pemasukan, tugas, catatan | Tersimpan dalam ≤ 3 tap; toast Tersimpan muncul (UI selesai di kode; simpan ke data contoh lokal)
 | 2.05 | Inbox untuk entri yang gagal diurai | Entri bisa dilengkapi atau dihapus |
 | 2.06 | API `/api/capture` + pengurai kata kunci | 10 kalimat contoh terurai benar (tes otomatis) |
 | 2.07 | API key: buat, salin, cabut, uji koneksi | Layar Shortcuts & Siri berfungsi penuh |
