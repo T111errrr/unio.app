@@ -8,7 +8,7 @@ type Props = {
   /** Ikon di kotak kiri (36 px). Kosong = tanpa kotak. */
   leadingIcon?: IconName;
   /** Figma: Trailing = Chevron / Value / Toggle / Check */
-  trailing?: "none" | "chevron" | "value" | "toggle" | "check";
+  trailing?: "none" | "chevron" | "value" | "valueChevron" | "toggle" | "check";
   /** Teks di kanan untuk trailing="value". */
   value?: string;
   /** Untuk trailing="toggle" dan "check". */
@@ -33,6 +33,13 @@ export function ListRow({
   let end: ReactNode = null;
   if (trailing === "chevron") end = <span className="text-ink-tertiary"><Icon name="chevron-right" size="small" /></span>;
   if (trailing === "value") end = <span className="t-body text-ink-secondary">{value}</span>;
+  if (trailing === "valueChevron")
+    end = (
+      <>
+        <span className="t-body text-ink-secondary">{value}</span>
+        <span className="text-ink-tertiary"><Icon name="chevron-right" size="small" /></span>
+      </>
+    );
   if (trailing === "check") end = checked ? <Icon name="check" /> : null;
   if (trailing === "toggle") end = <Toggle checked={checked} onCheckedChange={onCheckedChange} label={title} />;
 

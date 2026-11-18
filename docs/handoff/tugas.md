@@ -30,7 +30,7 @@ Status awal 16 Nov 2026: **siap** = bahannya sudah ada di repo ini dan tinggal d
 
 | ID | Tugas | Selesai bila |
 | --- | --- | --- |
-| 2.01 | Tugas: list Kantor/Pribadi/Ide, Mendatang/Selesai | Tambah, ubah, selesai, hapus jalan; 5 state |
+| 2.01 | Tugas: list Kantor/Pribadi/Ide, Mendatang/Selesai | Tambah, ubah, selesai, hapus jalan; 5 state (selesai di kode: tampilan + 5 state, data contoh; tambah/hapus menyusul) |
 | 2.02 | Detail tugas (sheet / panel desktop), subtugas, prioritas, tenggat | Perubahan tersimpan otomatis |
 | 2.03 | Swipe aksi + hapus dengan Undo | Hapus bisa dibatalkan dalam 5 detik |
 | 2.04 | Catat cepat: pengeluaran, pemasukan, tugas, catatan | Tersimpan dalam ≤ 3 tap; toast Tersimpan muncul |

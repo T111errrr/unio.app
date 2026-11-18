@@ -225,6 +225,20 @@
     "markOpen": "Tandai belum selesai",
     "priority": "Prioritas tinggi",
     "title": "Tugas",
-    "search": "Cari"
+    "search": "Cari",
+    "detail": {
+      "title": "Detail tugas",
+      "titleLabel": "Judul",
+      "notes": "Catatan",
+      "due": "Tenggat",
+      "repeat": "Ulangi",
+      "list": "List",
+      "no": "Tidak",
+      "none": "Tidak ada",
+      "subtasks": "Subtugas",
+      "addSubtask": "Tambah subtugas",
+      "addTag": "+ Tag",
+      "more": "Lainnya"
+    }
   }
 }
