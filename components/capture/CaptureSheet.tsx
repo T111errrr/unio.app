@@ -150,7 +150,7 @@ function CaptureForm({ initialTab, onClose, onSaved }: { initialTab: Tab; onClos
       return onSaved(() => tasksStore.discard(id));
     }
     const id = notesStore.add({ title: title.trim(), body, tag: t("tagPersonal") });
-    onSaved(() => notesStore.remove(id));
+    onSaved(() => notesStore.discard(id));
   }
 
   const saveLabel = tab === "task" ? t("saveTask") : tab === "note" ? t("saveNote") : tc("save");

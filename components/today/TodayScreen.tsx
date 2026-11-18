@@ -128,7 +128,8 @@ export function TodayScreen() {
     [transactions, now, empty],
   );
   const spent = todayTx.filter((x) => x.kind === "expense").reduce((s, x) => s + x.amount, 0);
-  const lastNote = empty ? undefined : notes[0];
+  const liveNotes = notes.filter((n) => !n.deletedAt);
+  const lastNote = empty ? undefined : (liveNotes.find((n) => n.pinned) ?? liveNotes[0]);
 
   const shown = todayTasks.filter((x) =>
     tab === "done" ? x.done : tab === "pending" ? !x.done && isOverdue(x, ref) : !x.done,
