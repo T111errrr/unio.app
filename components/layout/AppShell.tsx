@@ -46,7 +46,7 @@ export function AppShell({ children }: { children: ReactNode }) {
         onClick={(event) => {
           if (event.target === event.currentTarget) setDrawerOpen(false);
         }}
-        className="fixed inset-y-0 left-0 m-0 h-dvh max-h-none w-62 max-w-none overflow-hidden bg-surface p-0 text-ink shadow-(--shadow-large) backdrop:bg-scrim xl:hidden"
+        className="motion-drawer fixed inset-y-0 left-0 m-0 h-dvh max-h-none w-62 max-w-none overflow-hidden bg-surface p-0 text-ink shadow-(--shadow-large) xl:hidden"
       >
         <SidebarBody variant="full" onToggle={() => setDrawerOpen(false)} onNavigate={() => setDrawerOpen(false)} />
       </dialog>

@@ -24,7 +24,7 @@ export function Toast({ type = "saved", message, actionLabel, onAction, classNam
     <div
       role={type === "error" ? "alert" : "status"}
       className={cx(
-        "inline-flex items-center gap-2.5 rounded-(--radius-full) border border-border bg-surface py-2 pr-2 pl-4",
+        "motion-toast inline-flex items-center gap-2.5 rounded-(--radius-full) border border-border bg-surface py-2 pr-2 pl-4",
         "text-ink shadow-(--shadow-surface-floating)",
         className,
       )}
