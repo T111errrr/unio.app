@@ -39,7 +39,7 @@ export function Sheet({ open, onClose, title, children }: Props) {
       className={cx(
         "fixed inset-x-0 top-auto bottom-0 m-0 max-h-[85dvh] w-full max-w-none overflow-y-auto bg-surface p-0 text-ink",
         "rounded-t-(--radius-card) rounded-b-none shadow-(--shadow-large) backdrop:bg-scrim",
-        "md:inset-auto md:m-auto md:max-w-md md:rounded-(--radius-card)",
+        "md:inset-0 md:m-auto md:h-fit md:max-w-md md:rounded-(--radius-card)",
       )}
     >
       <div className="flex flex-col gap-4 px-4 pt-2 pb-[max(2rem,env(safe-area-inset-bottom))]">
