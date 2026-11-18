@@ -41,6 +41,7 @@
   --color-paylater: var(--unio-paylater);
   --color-success: var(--unio-success);
   --color-destructive: var(--unio-destructive);
+  --color-info: var(--unio-info);
 
   --color-scrim: var(--unio-scrim);
   --color-fade-clear: var(--unio-fade-clear);

@@ -37,6 +37,7 @@
   --unio-paylater: #cb30e0;
   --unio-success: #34c759;
   --unio-destructive: #ff383c;
+  --unio-info: #007aff; /* Figma: Accents/Blue (Apple) — dipakai Badge Info */
 
   --unio-scrim: rgba(0, 0, 0, 0.35);
   --unio-fade-clear: rgba(244, 244, 244, 0);
@@ -133,6 +134,7 @@
   --unio-paylater: #db34f2;
   --unio-success: #30d158;
   --unio-destructive: #ff4245;
+  --unio-info: #0a84ff; /* Figma: Accents/Blue (Apple) — dipakai Badge Info */
 
   --unio-scrim: rgba(0, 0, 0, 0.6);
   --unio-fade-clear: rgba(0, 0, 0, 0);
@@ -173,6 +175,7 @@
     --unio-paylater: #db34f2;
     --unio-success: #30d158;
     --unio-destructive: #ff4245;
+    --unio-info: #0a84ff; /* Figma: Accents/Blue (Apple) — dipakai Badge Info */
 
     --unio-scrim: rgba(0, 0, 0, 0.6);
     --unio-fade-clear: rgba(0, 0, 0, 0);

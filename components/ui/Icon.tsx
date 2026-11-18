@@ -1,5 +1,7 @@
 import { ICONS, type IconName } from "./icon-registry";
 
+export type { IconName };
+
 /** Ukuran mengikuti komponen Figma `Icon` (11:554): kotak / tinggi glyph, dalam px. */
 const SIZES = {
   small: { box: 18, glyph: 13 },
