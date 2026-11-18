@@ -70,7 +70,10 @@
     "light": "Terang",
     "dark": "Gelap",
     "reduceMotion": "Kurangi gerakan",
-    "textSize": "Ukuran teks"
+    "textSize": "Ukuran teks",
+    "subtitle": "Tema mengikuti Windows/iPhone, atau pilih manual.",
+    "hint": "Mode gelap mengikuti pengaturan iPhone atau Windows bila \"Ikuti sistem\" dipilih.",
+    "other": "Tampilan lain"
   },
   "settings": {
     "general": "Umum",

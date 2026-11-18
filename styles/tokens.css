@@ -195,6 +195,14 @@
   }
 }
 
+/* Pengaturan app "Kurangi gerakan" (sama efeknya dengan pengaturan sistem). */
+[data-reduce-motion="true"] {
+  --duration-push: 1ms;
+  --duration-sheet: 1ms;
+  --duration-close: 1ms;
+  --duration-fade: 1ms;
+}
+
 /* ---- Tipografi (text style Figma) ----
  * Mobile memakai skala iOS, desktop (>= 768px) memakai skala macOS.
  * Pakai kelas ini, jangan menulis ukuran font langsung di komponen. */
