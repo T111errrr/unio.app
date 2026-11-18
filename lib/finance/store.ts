@@ -1,6 +1,7 @@
 "use client";
 
 import { useSyncExternalStore } from "react";
+import { createMockTransactions } from "./mock";
 
 export type TransactionKind = "expense" | "income";
 export type Transaction = {
@@ -10,10 +11,12 @@ export type Transaction = {
   amount: number;
   category: string;
   note: string;
+  /** Kantong sumber/tujuan, mis. "Cash". */
+  pocket: string;
   at: string;
 };
 
-let state: { transactions: Transaction[] } = { transactions: [] };
+let state: { transactions: Transaction[] } = { transactions: createMockTransactions() };
 const listeners = new Set<() => void>();
 const emit = () => listeners.forEach((l) => l());
 

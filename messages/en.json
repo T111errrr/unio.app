@@ -267,5 +267,35 @@
       "message": "\"{title}\" will be moved to Recently Deleted and can be restored within 30 days.",
       "toast": "Task deleted"
     }
+  },
+  "today": {
+    "greeting": "Hi, {name}",
+    "tagline": "One quick note, one tidy day.",
+    "toggleTheme": "Switch theme",
+    "week": "This week",
+    "summary": "Today's summary",
+    "expenseShort": "Spending",
+    "tasksShort": "Tasks",
+    "ofBudget": "of {amount}",
+    "noTasksYet": "no tasks yet",
+    "doneLabel": "done",
+    "inbox": "Inbox",
+    "inboxCount": "{count} incomplete",
+    "tasksToday": "Today's tasks",
+    "seeAll": "See all",
+    "tabTodo": "To do",
+    "tabDone": "Done",
+    "tabPending": "Pending",
+    "nothingHere": "No tasks in this tab.",
+    "emptyTasksTitle": "No tasks today",
+    "txToday": "Today's transactions",
+    "oneUnsynced": "1 not synced",
+    "emptyTxTitle": "No transactions yet",
+    "emptyTxBody": "Log your first expense, e.g. \"coffee 25k\".",
+    "addTx": "Add transaction",
+    "lastNote": "Latest note",
+    "sectionToday": "Today",
+    "errorTitle": "Couldn't load data",
+    "errorBody": "Check your internet connection, then try again. Unsaved notes stay safe on your device."
   }
 }

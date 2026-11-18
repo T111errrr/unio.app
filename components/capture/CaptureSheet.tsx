@@ -127,7 +127,7 @@ function CaptureForm({ initialTab, onClose, onSaved }: { initialTab: Tab; onClos
   function save() {
     if (!canSave) return;
     if (money && amount && chosen) {
-      const id = financeStore.add({ kind: tab as "expense" | "income", amount, category: chosen, note: parsed.note });
+      const id = financeStore.add({ kind: tab as "expense" | "income", amount, category: chosen, note: parsed.note, pocket: t("pocketCash") });
       return onSaved(() => financeStore.remove(id));
     }
     if (tab === "task") {
