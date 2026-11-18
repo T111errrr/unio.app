@@ -1,0 +1,137 @@
+@import "tailwindcss";
+@import "../styles/tokens.css";
+
+/*
+ * Tugas 1.04 — token Figma (styles/tokens.css) dipetakan ke tema Tailwind.
+ * Nilai token TIDAK ditulis di sini; semua utilitas membaca variabel dari tokens.css,
+ * jadi light/dark otomatis mengikuti <html data-theme="…">.
+ *
+ * Skala bawaan Tailwind untuk warna, radius, spacing, bayangan, dan font dimatikan
+ * supaya hanya token Unio yang bisa dipakai (tidak ada nilai "liar").
+ */
+@theme inline {
+  /* ---- Warna: bg-*, text-*, border-*, fill-*, dst. ---- */
+  --color-*: initial;
+  --color-transparent: transparent;
+  --color-current: currentColor;
+
+  --color-accent: var(--unio-accent);
+  --color-on-accent: var(--unio-on-accent);
+  --color-background: var(--unio-background);
+  --color-surface: var(--unio-surface);
+  --color-surface-inset: var(--unio-surface-inset);
+  --color-field: var(--unio-field);
+  --color-border: var(--unio-border);
+  --color-divider: var(--unio-divider);
+  --color-track: var(--unio-track);
+  --color-disabled: var(--unio-disabled);
+  --color-on-disabled: var(--unio-on-disabled);
+
+  --color-text-primary: var(--unio-text-primary);
+  --color-text-secondary: var(--unio-text-secondary);
+  --color-text-tertiary: var(--unio-text-tertiary);
+
+  --color-card-dark: var(--unio-card-dark);
+  --color-on-card-dark: var(--unio-on-card-dark);
+  --color-on-card-dark-secondary: var(--unio-on-card-dark-secondary);
+  --color-track-dark: var(--unio-track-dark);
+  --color-on-light-chip: var(--unio-on-light-chip);
+
+  --color-income: var(--unio-income);
+  --color-expense: var(--unio-expense);
+  --color-transfer: var(--unio-transfer);
+  --color-warning: var(--unio-warning);
+  --color-paylater: var(--unio-paylater);
+  --color-success: var(--unio-success);
+  --color-destructive: var(--unio-destructive);
+
+  --color-scrim: var(--unio-scrim);
+  --color-fade-clear: var(--unio-fade-clear);
+  --color-halo: var(--unio-halo);
+  --color-halo-clear: var(--unio-halo-clear);
+
+  /* ---- Spacing: p-16 = 16px, gap-8 = 8px (angka = px, sama dengan Figma) ---- */
+  --spacing: initial;
+  --spacing-*: initial;
+  --spacing-0: 0px;
+  --spacing-2: var(--spacing-2);
+  --spacing-4: var(--spacing-4);
+  --spacing-8: var(--spacing-8);
+  --spacing-12: var(--spacing-12);
+  --spacing-16: var(--spacing-16);
+  --spacing-20: var(--spacing-20);
+  --spacing-24: var(--spacing-24);
+  --spacing-32: var(--spacing-32);
+  --spacing-40: var(--spacing-40);
+  --spacing-touch: var(--size-touch-target);
+  --spacing-macos-control: var(--size-macos-control);
+  --spacing-ios-margin: var(--size-ios-margin);
+  --spacing-macos-margin: var(--size-macos-margin);
+  --spacing-sidebar: var(--size-sidebar);
+  --spacing-sidebar-rail: var(--size-sidebar-rail);
+
+  /* ---- Radius: rounded-* ---- */
+  --radius-*: initial;
+  --radius-xs: var(--radius-xs);
+  --radius-s: var(--radius-s);
+  --radius-m: var(--radius-m);
+  --radius-l: var(--radius-l);
+  --radius-control: var(--radius-control);
+  --radius-card-inner: var(--radius-card-inner);
+  --radius-xl: var(--radius-xl);
+  --radius-card: var(--radius-card);
+  --radius-full: var(--radius-full);
+
+  /* ---- Bayangan: shadow-* ---- */
+  --shadow-*: initial;
+  --shadow-small: var(--shadow-small);
+  --shadow-medium: var(--shadow-medium);
+  --shadow-large: var(--shadow-large);
+  --shadow-card-soft: var(--shadow-card-soft);
+  --shadow-card-elevated: var(--shadow-card-elevated);
+  --shadow-button-bevel: var(--shadow-button-bevel);
+  --shadow-surface-floating: var(--shadow-surface-floating);
+
+  /* ---- Font: font-sans, font-serif ---- */
+  --font-*: initial;
+  --font-sans: var(--font-sans);
+  --font-serif: var(--font-serif);
+
+  /* ---- Gerak: ease-ios, duration-sheet, dst. ---- */
+  --ease-*: initial;
+  --ease-ios: var(--ease-ios);
+  --ease-close: var(--ease-close);
+
+  /* ---- Breakpoint (CLAUDE.md): md = 768 px (Sidebar Rail), xl = 1280 px (Sidebar penuh) ---- */
+  --breakpoint-*: initial;
+  --breakpoint-md: 768px;
+  --breakpoint-xl: 1280px;
+}
+
+@utility duration-push {
+  transition-duration: var(--duration-push);
+}
+@utility duration-sheet {
+  transition-duration: var(--duration-sheet);
+}
+@utility duration-close {
+  transition-duration: var(--duration-close);
+}
+@utility duration-fade {
+  transition-duration: var(--duration-fade);
+}
+
+@layer base {
+  html {
+    background-color: var(--unio-background);
+    color: var(--unio-text-primary);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    text-size-adjust: 100%;
+  }
+
+  body {
+    min-height: 100dvh;
+  }
+}

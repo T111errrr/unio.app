@@ -9,3 +9,7 @@ out/
 .DS_Store
 coverage/
 supabase/.temp/
+build/
+*.pem
+*.tsbuildinfo
+next-env.d.ts

@@ -1,0 +1,7 @@
+<!-- Ikon app SEMENTARA Unio (tugas 1.02): maskot "dua garis mata" putih di atas warna accent (#111111).
+     Ganti dengan ikon final dari Figma bila sudah ada, lalu buat ulang PNG di public/icons dan app/apple-icon.png. -->
+<svg xmlns="http://www.w3.org/2000/svg" width="1024" height="1024" viewBox="0 0 1024 1024">
+  <rect width="1024" height="1024" fill="#111111"/>
+  <rect x="356" y="400" width="92" height="224" rx="46" fill="#ffffff"/>
+  <rect x="576" y="400" width="92" height="224" rx="46" fill="#ffffff"/>
+</svg>
